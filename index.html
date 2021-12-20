@@ -9,6 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
     <title>My Task Planner</title>
   </head>
   <body>
@@ -32,18 +41,18 @@
       </div>
       <div class="modal-body">
         <!-- Bootstrap form -->
-        <form class="was-validated">
+        <form>
 
           <!-- Form: Task Name -->
           <div class="mb-3">
-            <label for="inputTaskName" class="col-form-label" style="display:None">Task Name</label>
-              <input type="text" class="form-control" id="inputTaskName" placeholder="Task Name" required>
+            <label for="validationTaskarea" class="col-form-label" style="display:None">Task Name</label>
+              <input type="text" class="form-control is-invalid" id="inputTaskName" placeholder="Task Name" required>
           </div>
 
           <!-- Form: Description -->
           <div class="mb-3">
             <label for="validationTextarea" style="display:none">Description</label>
-            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Description"></textarea>
+            <textarea class="form-control" id="validationTextarea" placeholder="Description"></textarea>
           </div>
 
           <!-- Form: Assigned To -->
@@ -54,8 +63,8 @@
 
           <!-- Form: Select Date -->
           <div class="mb-3">
-            <label for="DueDate" class="col-form-label" style="display:none">Due date</label>
-              <input type="text" class="form-control" id="AssignedTo" placeholder="Due date">
+            <label for="newTaskDueDate" style="display:none">Due Date</label>
+            <input type="date" class="form-control" id="newTaskDueDate" value="Due date">
           </div>
 
           <!-- <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
@@ -67,12 +76,13 @@
           <!-- Form: Status -->
                   
           <div class="form-group">
-            <select class="custom-select">
-              <option value="">Status</option>
-              <option value="1">To Do</option>
-              <option value="2">In Progress</option>
-              <option value="3">Review</option>
-              <option value="4">Done</option>
+            <label for="priority" style="display: none">Select status:</label>
+            <select class="form-control" id="Priority">
+              <option value="">Status option</option>
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Review">Review</option>
+              <option value="Done">Done</option>
             </select>
           </div>
 
@@ -80,20 +90,23 @@
           <!-- Form: Priority -->
 
           <div class="form-group">
-            <select class="custom-select">
-              <option value="">Priority</option>
-              <option value="1">Priority 1</option>
-              <option value="2">Priority 2</option>
-              <option value="3">Priority 3</option>
-              <option value="4">Priority 4</option>
+            <label for="priority" style="display: none">Select priority:</label>
+            <select class="form-control" id="Priority">
+              <option value="">Priority option</option>             
+              <option value="1">🟥 Priority 1</option>
+              <option value="2">🟧 Priority 2</option>
+              <option value="3">🟦 Priority 3</option>
+              <option value="4">⬜ Priority 4</option>
             </select>
             <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>    
           </div>
 
+
+
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-          <button name="ResetForm" class="btn waves-effect waves-light" id="ResetForm" type="reset">Reset</button>
+          <button name="ResetForm" class="btn btn-secondary" id="ResetForm" type="reset">Reset</button>
           <button class="btn btn-primary" type="submit">Submit</button>
         </div>
       </form>
