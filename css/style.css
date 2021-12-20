@@ -1,3 +1,13 @@
+.header{
+
+    background-color: rgb(120, 161, 238);
+    text-align: center;
+    width: 100%
+
+    }
+
+  
+  
 .widget-content .widget-content-wrapper {
     display: flex;
     flex: 1;
