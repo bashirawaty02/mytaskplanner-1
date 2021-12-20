@@ -44,28 +44,38 @@
       <div class="modal-body">
         <!-- Bootstrap form -->
         <form class="was-validated">
+
+          <!-- Form: Task Name -->
           <div class="mb-3">
             <label for="inputTaskName" class="col-form-label" style="display:None">Task Name</label>
               <input type="text" class="form-control" id="inputTaskName" placeholder="Task Name" required>
           </div>
+
+          <!-- Form: Description -->
           <div class="mb-3">
             <label for="validationTextarea" style="display:none">Description</label>
             <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Description"></textarea>
-            <!-- <div class="invalid-feedback">
-              Please enter a message in the textarea.
-            </div> -->
           </div>
+
+          <!-- Form: Assigned To -->
           <div class="mb-3">
             <label for="AssignedTo" class="col-form-label" style="display:none">Assigned to</label>
               <input type="text" class="form-control" id="AssignedTo" placeholder="Assigned to">
           </div>
 
-          <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
-            <input placeholder="Select date" type="text" id="example" class="form-control">
-            <label for="example">Try me...</label>
-            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+          <!-- Form: Select Date -->
+          <div class="mb-3">
+            <label for="DueDate" class="col-form-label" style="display:none">Due date</label>
+              <input type="text" class="form-control" id="AssignedTo" placeholder="Due date">
           </div>
+
+          <!-- <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+            <input placeholder="Select date" type="text" id="example" class="form-control">
+            <label for="example" style="display:None">Try me...</label>
+            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+          </div> -->
           
+          <!-- Form: Status -->
                   
           <div class="form-group">
             <select class="custom-select">
@@ -78,7 +88,7 @@
             <div class="invalid-feedback">Example invalid custom select feedback</div>
           </div>
 
-
+          <!-- Form: Priority -->
 
           <div class="form-group">
             <select class="custom-select">
@@ -94,7 +104,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+        <input class="btn btn-primary" type="reset" value="Reset">
         <button type="button" class="btn btn-primary">Submit</button>
       </div>
     </div>
