@@ -33,65 +33,78 @@
       <div class="modal-body">
         <!-- Bootstrap form -->
         <form class="was-validated">
+
+          <!-- Form: Task Name -->
           <div class="mb-3">
-            <label for="validationTextarea">Task Name</label>
-            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-            <!-- <div class="invalid-feedback">
-              Please enter a message in the textarea.
-            </div> -->
+            <label for="inputTaskName" class="col-form-label" style="display:None">Task Name</label>
+              <input type="text" class="form-control" id="inputTaskName" placeholder="Task Name" required>
           </div>
+
+          <!-- Form: Description -->
           <div class="mb-3">
-            <label for="validationTextarea">Description</label>
-            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textbox"></textarea>
-            <!-- <div class="invalid-feedback">
-              Please enter a message in the textarea.
-            </div> -->
+            <label for="validationTextarea" style="display:none">Description</label>
+            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Description"></textarea>
           </div>
-        
-          <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-            <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
-            <div class="invalid-feedback">Example invalid feedback text</div>
+
+          <!-- Form: Assigned To -->
+          <div class="mb-3">
+            <label for="AssignedTo" class="col-form-label" style="display:none">Assigned to</label>
+              <input type="text" class="form-control" id="AssignedTo" placeholder="Assigned to">
           </div>
-        
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
-            <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+
+          <!-- Form: Select Date -->
+          <div class="mb-3">
+            <label for="DueDate" class="col-form-label" style="display:none">Due date</label>
+              <input type="text" class="form-control" id="AssignedTo" placeholder="Due date">
           </div>
-          <div class="custom-control custom-radio mb-3">
-            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
-            <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
-            <div class="invalid-feedback">More example invalid feedback text</div>
-          </div>
-        
+
+          <!-- <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+            <input placeholder="Select date" type="text" id="example" class="form-control">
+            <label for="example" style="display:None">Try me...</label>
+            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+          </div> -->
+          
+          <!-- Form: Status -->
+                  
           <div class="form-group">
-            <select class="custom-select" required>
-              <option value="">Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select">
+              <option value="">Status</option>
+              <option value="1">To Do</option>
+              <option value="2">In Progress</option>
+              <option value="3">Review</option>
+              <option value="4">Done</option>
+            </select>
+          </div>
+
+
+          <!-- Form: Priority -->
+
+          <div class="form-group">
+            <select class="custom-select">
+              <option value="">Priority</option>
+              <option value="1">Priority 1</option>
+              <option value="2">Priority 2</option>
+              <option value="3">Priority 3</option>
+              <option value="4">Priority 4</option>
             </select>
             <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>    
           </div>
-        
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-            <div class="invalid-feedback">Example invalid custom file feedback</div>
-          </div>
-        </form>
+
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+          <button name="ResetForm" class="btn waves-effect waves-light" id="ResetForm" type="reset">Reset</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
   </div>
 </div>
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./app.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
