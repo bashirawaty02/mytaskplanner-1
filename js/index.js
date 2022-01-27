@@ -412,6 +412,9 @@ addToListTaskForm.addEventListener('reset', function() {
     addListTaskDueDateEl.parentElement.classList.remove('error', 'success');
     addListTaskDueDateEl.parentElement.classList.add('error');
     
+    addListTaskStatusEl.parentElement.querySelector('small').innerText = '';
+    addListTaskStatusEl.parentElement.classList.remove('error', 'success');
+    addListTaskStatusEl.parentElement.classList.add('error');
     
 });
 
