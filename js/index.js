@@ -359,19 +359,33 @@ const addListCheckDueDate = () => {
     return valid;
 };
 
+const addListCheckStatus = () => {
+    let valid = false;
+    const taskStatus = addListTaskStatusEl.value.trim();
+
+    if(!isRequired(taskStatus)) {
+        showError(addListTaskStatusEl, 'Please select an option.');
+    } else {
+        showSuccess(addListTaskStatusEl);
+        valid = true;
+    }
+    return valid;
+};
+
 const addListValidateTaskForm = function() {
 
     // validate form
     let isTaskNameValid = addListCheckTaskName(),
         isTaskDescriptionValid = addListCheckTaskDescription(),
         isAssignedToValid = addListCheckAssignedTo(),
-        isDueDateValid = addListCheckDueDate();
+        isDueDateValid = addListCheckDueDate(),
+        isStatusValid = addListCheckStatus();
     
 
     // submit to server if the form is valid
     let isFormValid = isTaskNameValid && 
         isTaskDescriptionValid && isAssignedToValid &&
-        isDueDateValid;
+        isDueDateValid && isStatusValid;
 
 
     if(isFormValid) {
@@ -412,12 +426,13 @@ addToListTaskForm.addEventListener('submit', function(event) {
     let isTaskNameValid = addListCheckTaskName(),
         isTaskDescriptionValid = addListCheckTaskDescription(),
         isAssignedToValid = addListCheckAssignedTo(),
-        isDueDateValid = addListCheckDueDate();
+        isDueDateValid = addListCheckDueDate(),
+        isStatusValid = addListCheckStatus();
     
     // submit to server if the form is valid
     let isFormValid = isTaskNameValid && 
         isTaskDescriptionValid && isAssignedToValid &&
-        isDueDateValid;
+        isDueDateValid && isStatusValid;
 
     if(isFormValid) {
         // addNewTaskForm.submit(); // commented out to prevent form from being submitted
@@ -654,6 +669,9 @@ addToListTaskForm.addEventListener('input', debounce(function (event) {
             break;
         case 'listTaskDueDate':
             addListCheckDueDate();
+            break;
+        case 'listTaskStatus':
+            addListCheckStatus();
             break;
     }
 }));
