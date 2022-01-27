@@ -475,13 +475,14 @@ addToListTaskForm.addEventListener('submit', function(event) {
 // VALIDATING EDIT FORM
 const editCheckTaskName = () => {
     let valid = false;
-    const min = 8;
+    const min = 5;
+    const max = 30;
     const taskName = editTaskNameEl.value.trim();
 
     if(!isRequired(taskName)) {
         showError(editTaskNameEl, 'Task name cannot be empty.');
-    } else if (!isMinLength(taskName.length, min)) {
-        showError(editTaskNameEl, `Task name must be more than ${min} characters.`)
+    } else if (!isBetween(taskName.length, min, max)) {
+        showError(editTaskNameEl, `Task name must be between ${min} and ${max} characters.`)
     } else {
         showSuccess(editTaskNameEl);
         valid = true;
@@ -491,7 +492,7 @@ const editCheckTaskName = () => {
 
 const editCheckTaskDescription = () => {
     let valid = false;
-    const min = 15;
+    const min = 5;
     const taskDescription = editTaskDescriptionEl.value.trim();
 
     if(!isRequired(taskDescription)) {
@@ -507,13 +508,14 @@ const editCheckTaskDescription = () => {
 
 const editCheckAssignedTo = () => {
     let valid = false;
-    const min = 8;
+    const min = 5;
+    const max = 30;
     const taskAssignedTo = editAssignedToEl.value.trim();
 
     if(!isRequired(taskAssignedTo)) {
         showError(editAssignedToEl, 'Name cannot be empty.');
-    } else if (!isMinLength(taskAssignedTo.length, min)) {
-        showError(editAssignedToEl, `Name must be more than ${min} characters.`)
+    } else if (!isBetween(taskAssignedTo.length, min, max)) {
+        showError(editAssignedToEl, `Name must be between ${min} and ${max} characters.`)
     } else {
         showSuccess(editAssignedToEl);
         valid = true;
@@ -556,6 +558,19 @@ const editCheckDueDate = () => {
     return valid;
 };
 
+const editListCheckStatus = () => {
+    let valid = false;
+    const taskStatus = editTaskStatusEl .value.trim();
+
+    if(!isRequired(taskStatus)) {
+        showError(editTaskStatusEl , 'Please select an option.');
+    } else {
+        showSuccess(editTaskStatusEl );
+        valid = true;
+    }
+    return valid;
+};
+
 
 const editValidateTaskForm = function() {
 
@@ -563,14 +578,14 @@ const editValidateTaskForm = function() {
     let isTaskNameValid = editCheckTaskName(),
         isTaskDescriptionValid = editCheckTaskDescription(),
         isAssignedToValid = editCheckAssignedTo(),
-        isListNameValid = editCheckListName(),
-        isDueDateValid = editCheckDueDate();
+        isDueDateValid = editCheckDueDate(),
+        isStatusValid = editListCheckStatus();
     
 
     // submit to server if the form is valid
     let isFormValid = isTaskNameValid && 
-        isTaskDescriptionValid && isAssignedToValid &&
-        isListNameValid && isDueDateValid;
+        isTaskDescriptionValid && isAssignedToValid
+        && isDueDateValid && isStatusValid;
 
 
     if(isFormValid) {
@@ -593,15 +608,17 @@ editTaskForm.addEventListener('reset', function() {
     editAssignedToEl.parentElement.classList.remove('error', 'success');
     editAssignedToEl.parentElement.classList.add('error');
     
-    editTaskListNameEl.parentElement.querySelector('small').innerText = '';
-    editTaskListNameEl.parentElement.classList.remove('error', 'success');
-    editTaskListNameEl.parentElement.classList.add('error');
+    // editTaskListNameEl.parentElement.querySelector('small').innerText = '';
+    // editTaskListNameEl.parentElement.classList.remove('error', 'success');
+    // editTaskListNameEl.parentElement.classList.add('error');
     
     editTaskDueDateEl.parentElement.querySelector('small').innerText = '';
     editTaskDueDateEl.parentElement.classList.remove('error', 'success');
     editTaskDueDateEl.parentElement.classList.add('error');
     
-    
+    editTaskStatusEl.parentElement.querySelector('small').innerText = '';
+    editTaskStatusEl.parentElement.classList.remove('error', 'success');
+    editTaskStatusEl.parentElement.classList.add('error');
     
 });
 
@@ -692,12 +709,15 @@ editTaskForm.addEventListener('input', debounce(function (event) {
         case 'editAssignedTo':
             editCheckAssignedTo();
             break;
-        case 'editTaskListName':
-            editCheckListName();
-            break;
+        // case 'editTaskListName':
+        //     editCheckListName();
+        //     break;
         case 'editTaskDueDate':
             editCheckDueDate();
             break;
+        case 'editTaskStatus':
+            editListCheckStatus();
+            break;    
     }
 }));
 
