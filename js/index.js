@@ -431,11 +431,11 @@ addToListTaskForm.addEventListener('submit', function(event) {
         // let id;
 
         // setting default value of status to 'To Do'
-        if (status) {
-            status = status;
-        } else {
-            status = 'To Do'
-        }
+        // if (status) {
+        //     status = status;
+        // } else {
+        //     status = 'To Do'
+        // }
         // Adding task to the taskManager
         taskManager.addTask(name, description, assignedTo, dueDate, status, priority);
         taskManager.render();
