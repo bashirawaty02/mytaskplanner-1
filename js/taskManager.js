@@ -1,27 +1,27 @@
 // Creating New Task Function
-const createTaskHtml = (name, description, assignedTo, dueDate, status, priority, currentId) => {
+const createTaskHtml = (name, description, assignedTo, dueDate, status, priority, id) => {
     const html = `
-    <!-- List item ${currentId} -->
-    <li class="list-group-item" id="accordion${currentId}">
+    <!-- List item ${id} -->
+    <li class="list-group-item" id="accordion${id}">
     <div class="todo-indicator bg-warning"></div>
     <div class="widget-content p-0">
         <div class="widget-content-wrapper">
             <div class="widget-content-left mr-2">
-                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox${currentId}" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox${currentId}">&nbsp;</label> </div>
+                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox${id}" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox${id}">&nbsp;</label> </div>
             </div>
-            <div class="widget-content-left">
+            <div class="widget-content-right">
                 <div class="widget-heading">
-                    <div class="task-title">
-                    ${name}<div class="badge badge-warning ml-2">${priority}</div>
-                    </div>
-                    <span class="blank"> </span>
-                    <div class="button-icons">
+                <div class="task-title">
+                ${name}<div class="badge badge-warning ml-2">${priority}</div>
+                </div>
+                <span class="blank"> </span>
+                <div class="button-icons">
                     <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
                     <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                    <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapse${currentId}" aria-expanded="false" aria-controls="collapse${currentId}"><span></span></i>
-                    </div>
+                    <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"><span></span></i>
                 </div>
-                <div id="collapse${currentId}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${currentId}">
+                </div>
+                <div id="collapse${id}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${id}">
                     <div class="widget-subheading"><small>Assigned To: ${assignedTo}</small></div>
                     <div class="d-flex w-100 mb-3 justify-content-between">
                     <small><i>${status}</i></small>
@@ -124,10 +124,9 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
 
 // Create a TaskManager class
 class TaskManager {
-    constructor(currentId = 0, status='To Do') {
+    constructor(currentId = 0) {
         this.tasks = [];
         this.currentId = currentId;
-        this.status = status;
     }
 
     // Create the addTask method
@@ -162,7 +161,7 @@ class TaskManager {
             const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
             // Create the task html
-            const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.status, task.priority);
+            const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.status, task.priority, task.id);
 
             // Push it to the tasksHtmlList array
             tasksHtmlList.push(taskHtml);

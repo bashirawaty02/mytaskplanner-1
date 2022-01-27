@@ -40,9 +40,9 @@
     
     <!-- Task button -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Add New Task
-    </button>
+    </button> -->
     <br>
     <br>
     
@@ -223,8 +223,8 @@
                               <div class="form-group">
                                 <label for="listTaskStatus" style="display: none">Select status:</label>
                                 <select class="form-control" id="listTaskStatus">
-                                  <option value="">Status option (Default: To Do)</option>
-                                  <option value="To Do">To Do</option>
+                                  <!-- <option value="">Status option (Default: To Do)</option> -->
+                                  <option value="To Do">To Do (Default)</option>
                                   <option value="In Progress">In Progress</option>
                                   <option value="Review">Review</option>
                                   <option value="Done">Done</option>
@@ -276,7 +276,7 @@
                                             <div class="widget-content-left mr-2">
                                                 <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
                                             </div>
-                                            <div class="widget-content-left">
+                                            <div class="widget-content-right">
                                                 <div class="widget-heading">Set up meeting <div class="badge badge-danger ml-2" id="newPriorityLabel">Priority 1</div>
                                                 </div>
                                                 <div class="widget-subheading"><small>Assigned To: Joanna</small></div>                                                    
@@ -284,7 +284,7 @@
                                               <small><i>In progress</i></small>
                                               <small>Due: 06/07/2021</small>
                                             </div>
-                                            <p>This is description. Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+                                            <p>This is description. Lorem ipsum dolor s elit.?</p>
                                             <p>
                                               <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
                                                 Edit
@@ -389,6 +389,9 @@
                                                     <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
                                                   </div>
                                                 </div>
+                                              </div>
+                                              </div>
+
                                 </li>
 
                                 <!-- List item 2 -->
@@ -399,8 +402,9 @@
                                             <div class="widget-content-left mr-2">
                                                 <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox1" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox1">&nbsp;</label></div>
                                             </div>
-                                            <div class="widget-content-left">
+                                            <div class="widget-content-right">
                                               <div class="widget-heading">
+                                                
                                                 <div class="task-title">
                                                 Call customers<div class="badge badge-warning ml-2">Priority 2</div>
                                                 </div>
@@ -408,7 +412,7 @@
                                                 <div class="button-icons">
                                                   <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
                                                   <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                                                  <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span></span></i>
+                                                  <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
                                                 </div>
                                               </div>
                                               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
@@ -418,7 +422,7 @@
                                                   <small>Due: 06/07/2021</small>
                                                 </div>
                                                 <div class="content">
-                                                  <p>This is description. Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p> 
+                                                  <p>This is description.Lorem ipsum dolor sit amet consectetur Lorem i Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p> 
                                                   <!-- <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check icons""></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash icons "></i> </button> -->
                                                   <!-- Edit Button
                                                   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter2">
@@ -445,24 +449,26 @@
                                             <div class="widget-content-left mr-2">
                                                 <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox4" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox4">&nbsp;</label></div>
                                             </div>
-                                            <div class="widget-content-left flex2">
-                                                <div class="widget-heading">
-                                                  <div class="task-title">
-                                                    Orientation </div>
-                                                  <span class="blank"> </span>
-                                                  <div class="button-icons">
-                                                    <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                                                    <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                                                    <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span></span></i>
-                                                  </div>
+                                            <div class="widget-content-right">
+                                              <div class="widget-heading">
+                                                <div class="task-title">
+                                                Orientation
                                                 </div>
+                                                <span class="blank"> </span>
+                                                <div class="button-icons">
+                                                  <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
+                                                  <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
+                                                  <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span></span></i>
+                                                </div>
+                                              </div>
+                                                
                                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionThree">
                                                   <div class="widget-subheading"><small>Assigned To: Bhavani</small></div>
                                                   <div class="d-flex w-100 mb-3 justify-content-between">
                                                     <small><i>Done<div class="badge badge-pill badge-info ml-2">UPDATED</div></i></small>
                                                     <small></small>
                                                   </div>
-                                                  <p>This is description. Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+                                                  <p>This is description. Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
                                                   <p>
                                                     
                                                     <!-- Edit Button Trigger Modal

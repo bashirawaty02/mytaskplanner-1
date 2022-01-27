@@ -13,25 +13,42 @@
 .container {
     min-width: 400px;
     max-width: 500px;
+    /* box-shadow: 0 40px 60px -20px rgba(102, 101, 105, 0.15); */
+    /* border: 1px solid red; */
 }
 
 .widget-content .widget-content-wrapper {
     display: flex;
-    flex: 1;
+    flex-wrap: wrap;
     position: relative;
     align-items: center;
     /* max-width: 200px; */
+    /* border: 1px solid red; */
+}
+
+.list-group {
+    /* border: 1px solid red; */
+}
+
+.list-group-item:hover {
+    box-shadow: 0 20px 40px 0px rgba(0, 0, 0, 0.26);
+}
+
+.widget-content-right {
+    /* border: 1px solid green; */
+    flex: 1;
+    justify-content: space-between;
 }
 
 .widget-heading {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     /* border: 1px solid red; */
 }
 
 .blank {
-    flex-grow: 1;
+    flex: 1;
 }
 
 

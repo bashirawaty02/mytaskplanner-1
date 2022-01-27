@@ -23,8 +23,8 @@ const taskManager = new TaskManager(0);
 // console.log(taskManager.tasks[0].name); // returns name1
 
 // testing createTaskHtml
-const taskHtml = createTaskHtml('11', 'name11', 'description11', 'assignedto11', '20/10/2023', 'done');
-console.log(taskHtml);
+const taskHtml = createTaskHtml();
+// console.log(taskHtml);
 
 
 // Validating form
@@ -49,7 +49,8 @@ const editTaskDescriptionEl = document.getElementById('editTaskDescription');
 const editAssignedToEl = document.getElementById('editAssignedTo');
 const editTaskListNameEl = document.getElementById('editTaskListName');
 const editTaskDueDateEl = document.getElementById('editTaskDueDate');
-const editTaskStatusEl = document.getElementById('editTaskStatus')
+const editTaskStatusEl = document.getElementById('editTaskStatus');
+const tasksListHtml = document.getElementById('tasksList');
 
 // The following isRequired() function returns true if the input argument is empty:
 const isRequired = value => value === '' ? false : true; // ternary operator - if empty, return false & if not empty, return true
@@ -321,12 +322,13 @@ const addListCheckTaskDescription = () => {
 const addListCheckAssignedTo = () => {
     let valid = false;
     const min = 5;
+    const max = 30;
     const taskAssignedTo = addListAssignedToEl.value.trim();
 
     if(!isRequired(taskAssignedTo)) {
         showError(addListAssignedToEl, 'Name cannot be empty.');
-    } else if (!isMinLength(taskAssignedTo.length, min)) {
-        showError(addListAssignedToEl, `Name must be more than ${min} characters.`)
+    } else if (!isBetween(taskAssignedTo.length, min, max)) {
+        showError(addListAssignedToEl, `Name must be between ${min} and ${max} characters.`)
     } else {
         showSuccess(addListAssignedToEl);
         valid = true;
@@ -426,6 +428,7 @@ addToListTaskForm.addEventListener('submit', function(event) {
         const dueDate = addListTaskDueDateEl.value;
         let status = addListTaskStatusEl.value;
         const priority = addListTaskPriorityEl.value;
+        // let id;
 
         // setting default value of status to 'To Do'
         if (status) {
@@ -437,7 +440,8 @@ addToListTaskForm.addEventListener('submit', function(event) {
         taskManager.addTask(name, description, assignedTo, dueDate, status, priority);
         taskManager.render();
 
-        console.log(taskManager.tasks);
+        console.log(taskManager.tasks); // to check tasks
+        // console.log(tasksListHtml.innerHTML); // to check HTML for tasksList
 
         // Clear form
         addListTaskNameEl.value = '';
