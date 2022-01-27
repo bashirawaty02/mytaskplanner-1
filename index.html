@@ -135,6 +135,102 @@
       </div>
     </div>
 
+    <!-- EDIT FORM  -->
+    <!-- Modal -->
+    <div class="modal fade" id="editTaskButtonModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalForm" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title2" id="editTaskModalForm">Edit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+        <!-- Bootstrap form -->
+        <form id="editTaskForm" method="POST">
+
+          <!-- Form: Task Name -->
+          <div class="mb-3 form-field error">
+            <label for="editTaskName" class="col-form-label" style="display:None">Task Name</label>
+            <input type="text" class="form-control" id="editTaskName" placeholder="Task Name">
+            <small></small>
+          </div>
+
+          <!-- Form: Description -->
+          <div class="mb-3 form-field error">
+            <label for="editTaskDescription" style="display:none">Description</label>
+            <textarea class="form-control" id="editTaskDescription" placeholder="Description"></textarea>
+            <small></small>
+          </div>
+
+          <!-- Form: Assigned To -->
+          <div class="mb-3 form-field error">
+            <label for="editAssignedTo" class="col-form-label" style="display:none">Assigned to</label>
+            <input type="text" class="form-control" id="editAssignedTo" placeholder="Assigned to">
+            <small></small>
+          </div>
+
+          <!-- Form: Label -->
+          <!-- <div class="mb-3 mb-3 form-field error">
+            <label for="editTaskListName" class="col-form-label" style="display:none">List Name</label>
+            <input type="text" class="form-control" id="editTaskListName" placeholder="List Name">
+            <small></small>
+            </div> -->
+
+          <!-- Form: Select Date -->
+          <div class="mb-3 form-field error">
+            <label for="editTaskDueDate" style="display:none">Due Date</label>
+            <input type="date" class="form-control" id="editTaskDueDate" value="Due date">
+            <small></small>
+          </div>
+
+          
+          <!-- Form: Status -->
+                  
+          <div class="mb-3 form-field error">
+            <label for="editTaskStatus" style="display: none">Select status:</label>
+            <select class="form-control" id="editTaskStatus">
+              <option value="">Status option</option>
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Review">Review</option>
+              <option value="Done">Done</option>
+            </select>
+            <small></small>
+          </div>
+
+          <!-- Form: Priority Options -->
+
+          <div class="form-group">
+            <label for="editTaskPriority" style="display: none">Select priority:</label>
+            <select class="form-control" id="editTaskPriority">
+              <option value="">Priority option</option>
+              <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
+              <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
+              <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
+              <option value="Priority 4"><span class="emoji">⬜</span> Priority 4</option>
+            </select>
+            <div class="invalid-feedback">Example invalid custom select feedback</div>
+          </div>
+                                                      
+
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+          <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+        </form>
+      </div>
+
+
+        </div>
+        <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
+      </div>
+    </div>
+  </div>
+  </div>
+
     <!-- Delete Task Button Modal -->
     <div class="modal fade" id="deleteTaskModal" tabindex="-1" role="dialog" aria-labelledby="deleteTaskModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -171,7 +267,7 @@
                       <!-- Add to List Button trigger modal -->
                     <div class="card-header-title">
                       <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addToListModal">
-                        Add to list
+                        Add to List
                       </button>
                     </div>
                     
@@ -251,7 +347,7 @@
                             <div class="modal-footer">
                               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
                               <button name="ResetForm" class="btn btn-secondary" id="ResetForm" type="reset">Reset</button>
-                              <button class="btn btn-primary" type="submit">Submit</button>
+                              <button class="btn btn-primary" type="submit" >Submit</button>
                             </div>
                             </form>
                           </div>
@@ -268,9 +364,15 @@
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
                                 <ul class=" list-group list-group-flush" id="tasksList">                                 
+                                  
+                                  <!-- Greeting Message -->
+                                  <li class="list-group-item">
+                                            <h5>Welcome! 😎</h5>
+                                            <p>Start adding tasks by clicking "Add to List" button</p>
+                                </li>
 
                                   <!-- List item 1 -->
-                                  <li class="list-group-item">
+                                  <!-- <li class="list-group-item">
                                     <div class="todo-indicator bg-warning"></div>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
@@ -285,124 +387,34 @@
                                               <small><i>In progress</i></small>
                                               <small>Due: 06/07/2021</small>
                                             </div>
-                                            <p>This is description. Lorem ipsum dolor s elit.?</p>
-                                            <p>
-                                              <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
+                                            <p>This is description. Lorem ipsum dolor s elit.?</p> -->
+
+                                            <!-- <p> -->
+                                              <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
                                                 Edit
-                                              </button>
+                                              </button> -->
                                               <!-- Delete Button trigger modal -->
-                                              <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#deleteTaskModal">
+                                              <!-- <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#deleteTaskModal">
                                                 Delete
-                                              </button>
-                                            </p>
+                                              </button> -->
+                                            <!-- </p> -->
                                             
 
 
-                                            <!-- EDIT FORM  -->
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="editTaskButtonModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalForm" aria-hidden="true">
-                                                  <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <h5 class="modal-title2" id="editTaskModalForm">Edit</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                    <!-- Bootstrap form -->
-                                                    <form id="editTaskForm" method="POST">
-                                        
-                                                      <!-- Form: Task Name -->
-                                                      <div class="mb-3 form-field error">
-                                                        <label for="editTaskName" class="col-form-label" style="display:None">Task Name</label>
-                                                        <input type="text" class="form-control" id="editTaskName" placeholder="Task Name">
-                                                        <small></small>
-                                                      </div>
-                                        
-                                                      <!-- Form: Description -->
-                                                      <div class="mb-3 form-field error">
-                                                        <label for="editTaskDescription" style="display:none">Description</label>
-                                                        <textarea class="form-control" id="editTaskDescription" placeholder="Description"></textarea>
-                                                        <small></small>
-                                                      </div>
-                                        
-                                                      <!-- Form: Assigned To -->
-                                                      <div class="mb-3 form-field error">
-                                                        <label for="editAssignedTo" class="col-form-label" style="display:none">Assigned to</label>
-                                                        <input type="text" class="form-control" id="editAssignedTo" placeholder="Assigned to">
-                                                        <small></small>
-                                                      </div>
-                                        
-                                                      <!-- Form: Label -->
-                                                      <!-- <div class="mb-3 mb-3 form-field error">
-                                                        <label for="editTaskListName" class="col-form-label" style="display:none">List Name</label>
-                                                        <input type="text" class="form-control" id="editTaskListName" placeholder="List Name">
-                                                        <small></small>
-                                                        </div> -->
-                                        
-                                                      <!-- Form: Select Date -->
-                                                      <div class="mb-3 form-field error">
-                                                        <label for="editTaskDueDate" style="display:none">Due Date</label>
-                                                        <input type="date" class="form-control" id="editTaskDueDate" value="Due date">
-                                                        <small></small>
-                                                      </div>
-                                        
-                                                      
-                                                      <!-- Form: Status -->
-                                                              
-                                                      <div class="mb-3 form-field error">
-                                                        <label for="editTaskStatus" style="display: none">Select status:</label>
-                                                        <select class="form-control" id="editTaskStatus">
-                                                          <option value="">Status option</option>
-                                                          <option value="To Do">To Do</option>
-                                                          <option value="In Progress">In Progress</option>
-                                                          <option value="Review">Review</option>
-                                                          <option value="Done">Done</option>
-                                                        </select>
-                                                        <small></small>
-                                                      </div>
-                                        
-                                                      <!-- Form: Priority Options -->
-                                        
-                                                      <div class="form-group">
-                                                        <label for="editTaskPriority" style="display: none">Select priority:</label>
-                                                        <select class="form-control" id="editTaskPriority">
-                                                          <option value="">Priority option</option>
-                                                          <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
-                                                          <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
-                                                          <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-                                                          <option value="Priority 4"><span class="emoji">⬜</span> Priority 4</option>
-                                                        </select>
-                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                                      </div>
-                                                                                                  
-                                        
-                                                    <div class="modal-footer">
-                                                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-                                                      <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                      <button class="btn btn-primary" type="submit">Save</button>
-                                                    </div>
-                                                    </form>
-                                                  </div>
+                                            
 
-
-                                                    </div>
-                                                    <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              </div>
-
-                                </li>
+                                <!-- </li> -->
 
                                 <!-- List item 2 -->
-                                <li class="list-group-item" id="accordionTwo">
+                                <!-- <li class="list-group-item stroked" id="accordionTwo">
                                     <div class="todo-indicator bg-focus"></div>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox1" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox1">&nbsp;</label></div>
+                                                <div class="custom-checkbox custom-control">
+                                                  <input class="custom-control-input" id="exampleCustomCheckbox1" type="checkbox">
+                                                  <label class="custom-control-label" for="exampleCustomCheckbox1" >&nbsp;</label>
+                                                </div>
                                             </div>
                                             <div class="widget-content-right">
                                               <div class="widget-heading">
@@ -414,7 +426,7 @@
                                                 <div class="button-icons">
                                                   <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
                                                   <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                                                  <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
+                                                  <i class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
                                                 </div>
                                               </div>
                                               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
@@ -425,26 +437,16 @@
                                                 </div>
                                                 <div class="content">
                                                   <p>This is description.Lorem ipsum dolor sit amet consectetur Lorem i Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p> 
-                                                  <!-- <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check icons""></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash icons "></i> </button> -->
-                                                  <!-- Edit Button
-                                                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter2">
-                                                    Edit
-                                                  </button> -->
-                                                  <!-- Delete Button trigger modal -->
-                                                  <!-- <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#exampleModal">
-                                                    Delete
-                                                  </button> -->
                                                   </p>
                                                 </div>
                                               </div>
                                             </div>
-                                            <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
 
                                 <!-- List item 3 -->
-                                <li class="list-group-item" id="accordionThree">
+                                <!-- <li class="list-group-item" id="accordionThree">
                                     <div class="todo-indicator bg-primary"></div>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
@@ -456,10 +458,10 @@
                                                 <div class="task-title">
                                                 Orientation
                                                 </div>
-                                                <span class="blank"> </span>
+                                                <span class="blank"></span>
                                                 <div class="button-icons">
                                                   <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                                                  <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
+                                                  <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i>
                                                   <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span></span></i>
                                                 </div>
                                               </div>
@@ -473,21 +475,13 @@
                                                   <p>This is description. Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
                                                   <p>
                                                     
-                                                    <!-- Edit Button Trigger Modal
-                                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
-                                                      Edit
-                                                    </button>
-                                                    Delete Button trigger modal
-                                                    <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#deleteTaskModal">
-                                                      Delete
-                                                    </button> -->
                                                   </p>
-                                                </div>
+                                                </div> -->
                                                 
                                             <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
-                                        </div>
-                                    </div>
-                                </li>
+                                        <!-- </div>
+                                    </div> -->
+                                <!-- </li> -->
                                 
                             </ul>
                         </div>

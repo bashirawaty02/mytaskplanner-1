@@ -6,12 +6,21 @@ let dateString = `Current Date: ${day}/${month}/${year}`;
 dateElement.innerHTML = dateString;
 
 // Collapsible Task - Rotate down arrow when clicked
+
 $(".rotate").click(function () {
     $(this).toggleClass("down");
 })
 
+
+// const downArrow = document.getElementById('downArrow');
+// const collapseFunc = () => downArrow.classList.toggle("down");
+
+// downArrow.addEventListener('click', collapseFunc);
+
+// Initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(0);
-// console.log(taskManager);
+// console.log(taskManager); // for testing
+// console.log(taskManager.tasks.length); // for testing
 
 // testing inserting a new task into tasks array
 // taskManager.addTask("name1", "description1", "assignedT person1", "20/02/2023");
@@ -51,6 +60,7 @@ const editTaskListNameEl = document.getElementById('editTaskListName');
 const editTaskDueDateEl = document.getElementById('editTaskDueDate');
 const editTaskStatusEl = document.getElementById('editTaskStatus');
 const tasksListHtml = document.getElementById('tasksList');
+
 
 // The following isRequired() function returns true if the input argument is empty:
 const isRequired = value => value === '' ? false : true; // ternary operator - if empty, return false & if not empty, return true
@@ -261,6 +271,10 @@ addNewTaskForm.addEventListener('submit', function(event) {
 
         // Adding task to the taskManager
         taskManager.addTask(name, description, assignedTo, listName, dueDate, status, priority);
+        
+
+
+        // Render the tasks
         taskManager.render();
 
         console.log(taskManager.tasks);
@@ -281,7 +295,9 @@ addNewTaskForm.addEventListener('submit', function(event) {
 
 });
 
-console.log(taskManager.tasks.length);
+
+
+
 
 // console.log(taskManager.tasks)
 
@@ -466,11 +482,79 @@ addToListTaskForm.addEventListener('submit', function(event) {
         addListTaskDescriptionEl.value = '';
         addListAssignedToEl.value = '';
         addListTaskDueDateEl.value = '';
-        addListTaskStatusEl.value = 'To Do'; // setting default value of status to 'To Do'
+        addListTaskStatusEl.value = ''; // setting default value of status to 'To Do'
         addListTaskPriorityEl.value = '';
+
+        // reset border colour to red
+        addListTaskNameEl.parentElement.classList.remove('error', 'success');
+        addListTaskNameEl.parentElement.classList.add('error');
+        
+        addListTaskDescriptionEl.parentElement.classList.remove('error', 'success');
+        addListTaskDescriptionEl.parentElement.classList.add('error');
+        
+        addListAssignedToEl.parentElement.classList.remove('error', 'success');
+        addListAssignedToEl.parentElement.classList.add('error');
+        
+        addListTaskDueDateEl.parentElement.classList.remove('error', 'success');
+        addListTaskDueDateEl.parentElement.classList.add('error');
+        
+        addListTaskStatusEl.parentElement.classList.remove('error', 'success');
+        addListTaskStatusEl.parentElement.classList.add('error');
+        
+        // close modal form
+        $('#addToListModal').modal('hide'); // or $('#IDModal').modal('toggle');
     }
 });
 
+tasksListHtml.onclick = checkboxFunction;
+
+function checkboxFunction(event) {
+    if (event.target.classList.contains('done-checkbox')) {
+        // Get the parent Task
+        const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+        // console.log(parentTask)
+        // Get the taskId of the parent Task.
+        const taskId = Number(parentTask.dataset.taskId);
+        // console.log(taskId)
+        // Get the task from the TaskManager using the taskId
+        const task = taskManager.getTaskById(taskId);
+        console.log(task)
+        // Update the task status to 'Done'
+        
+        task.status = 'Done';
+        // console.log(task);
+
+        // Render the tasks
+        taskManager.render();
+
+        // parentTask.setAttribute('class', 'stroked');
+        console.log(parentTask);
+    }
+};
+
+// Add an 'onclick' event listener to the Tasks List
+// tasksListHtml.addEventListener('click', (event) => {
+//     // Check if a "Mark As Done" button was clicked
+//     if (event.target.classList.contains('done-checkbox')) {
+//         // Get the parent Task
+//         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+//         // console.log(parentTask)
+//         // Get the taskId of the parent Task.
+//         const taskId = Number(parentTask.dataset.taskId);
+//         // console.log(taskId)
+//         // Get the task from the TaskManager using the taskId
+//         const task = taskManager.getTaskById(taskId);
+//         console.log(task)
+//         // Update the task status to 'Done'
+//         parentTask.classList.add('stroked');
+//         console.log(parentTask);
+//         task.status = 'Done';
+//         // console.log(task);
+
+//         // Render the tasks
+//         taskManager.render();
+//     }
+// });
 
 // VALIDATING EDIT FORM
 const editCheckTaskName = () => {

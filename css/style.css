@@ -17,6 +17,7 @@
     /* border: 1px solid red; */
 }
 
+/* to position task card's heading into a row */
 .widget-content .widget-content-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -24,14 +25,6 @@
     align-items: center;
     /* max-width: 200px; */
     /* border: 1px solid red; */
-}
-
-.list-group {
-    /* border: 1px solid red; */
-}
-
-.list-group-item:hover {
-    box-shadow: 0 20px 40px 0px rgba(0, 0, 0, 0.26);
 }
 
 .widget-content-right {
@@ -48,12 +41,6 @@
     /* border: 1px solid red; */
 }
 
-.blank {
-    flex: 1;
-}
-
-
-
 .icons {
     cursor: pointer;
     margin-left: 20px;
@@ -68,6 +55,18 @@
     margin-bottom: px;
 }
 
+/* .blank {
+    flex: 1;
+} */
+
+
+/* to change background of task cards for mouse hover */
+.list-group-item:hover {
+    box-shadow: 0 20px 40px 0px rgba(0, 0, 0, 0.26);
+    background-color:whitesmoke;
+}
+
+/* for collapsible section */
 .rotate {
     transition: .7s transform ease-in-out;
 }
@@ -77,6 +76,7 @@
     transition: .7s transform ease-in-out;
 }
 
+/* to validate: error / success */
 .form-field.error input, .form-field.error textarea, .form-field.error select {
     border-color: red;
 }
@@ -87,4 +87,9 @@
 
 .form-field small {
     color: red;
+}
+
+/* used to strike off text in JS when it is marked as done */
+.stroked {
+    text-decoration: line-through;
 }
