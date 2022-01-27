@@ -1,4 +1,4 @@
-.header{
+.header {
 
     background-color: rgb(120, 161, 238);
     text-align: center;
@@ -6,14 +6,71 @@
 
     }
 
-  
-  
+.emoji {
+    font-family: 'segoe-ui-emoji-normal', sans-serif;
+}
+
+.container {
+    min-width: 400px;
+    max-width: 500px;
+}
+
 .widget-content .widget-content-wrapper {
     display: flex;
     flex: 1;
     position: relative;
     align-items: center;
+    /* max-width: 200px; */
 }
+
+.widget-heading {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* border: 1px solid red; */
+}
+
+.blank {
+    flex-grow: 1;
+}
+
+
+
+.icons {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.edit-icon {
+    color: green;
+}
+
+.trash-icon {
+    color: red;
+    margin-bottom: px;
+}
+
+.rotate {
+    transition: .7s transform ease-in-out;
+}
+
+.rotate.down {
+    transform: rotate(-180deg);
+    transition: .7s transform ease-in-out;
+}
+
+.form-field.error input, .form-field.error textarea, .form-field.error select {
+    border-color: red;
+}
+
+.form-field.success input, .form-field.success textarea, .form-field.success select {
+    border-color: green;
+}
+
+.form-field small {
+    color: red;
+}
+
 <<<<<<< HEAD
 =======
 
