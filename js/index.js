@@ -482,7 +482,7 @@ addToListTaskForm.addEventListener('submit', function(event) {
         addListTaskDescriptionEl.value = '';
         addListAssignedToEl.value = '';
         addListTaskDueDateEl.value = '';
-        addListTaskStatusEl.value = ''; // setting default value of status to 'To Do'
+        addListTaskStatusEl.value = ''; 
         addListTaskPriorityEl.value = '';
 
         // reset border colour to red

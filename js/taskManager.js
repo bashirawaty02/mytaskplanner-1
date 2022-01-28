@@ -15,7 +15,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
             <div class="widget-content-right">
                 <div class="widget-heading">
                 <div class="task-title">
-                ${name}<div class="badge badge-warning ml-2 ${status != 'Done' ? 'visible' : 'invisible'}">${priority}</div>
+                ${name}<div class="${priority === 'Priority 1' ? "badge badge-danger" : priority === 'Priority 2' ? "badge badge-warning" : priority === 'Priority 3' ? "badge badge-primary" : "badge badge-success"} ml-2 ${status != 'Done' ? 'visible' : 'invisible'}">${priority}</div>
                 </div>
                 <span class="blank"></span>
                 <div class="button-icons">
@@ -113,5 +113,6 @@ class TaskManager {
         // Set the inner html of the tasksList on the page
         const tasksList = document.querySelector('#tasksList');
         tasksList.innerHTML = tasksHtml;
+
     }
 };
