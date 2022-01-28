@@ -17,11 +17,11 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
                 <div class="task-title">
                 ${name}<div class="${priority === 'Priority 1' ? "badge badge-danger" : priority === 'Priority 2' ? "badge badge-warning" : priority === 'Priority 3' ? "badge badge-primary" : "badge badge-success"} ml-2 ${status != 'Done' ? 'visible' : 'invisible'}">${priority}</div>
                 </div>
-                <span class="blank"></span>
+                
                 <div class="button-icons">
-                    <i class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                    <i class="fa fa-trash fa-lg trash-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                    <i class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"><span></span></i>
+                    <span class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></span>
+                    <span class="fa fa-trash fa-lg trash-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#deleteTaskModal"></span> 
+                    <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span>
                 </div>
                 </div>
                 <div id="collapse${id}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${id}">
@@ -89,7 +89,7 @@ class TaskManager {
     render() {
         // Create an array to store the tasks' HTML
         const tasksHtmlList = [];
-
+        
         // Loop over our tasks and create the html, storing it in the array
         for (let i = 0; i < this.tasks.length; i++) {
             // Get the current task in the loop
@@ -115,4 +115,43 @@ class TaskManager {
         tasksList.innerHTML = tasksHtml;
 
     }
+
+    // Storing locally - localStorage can only store strings
+    // so we have to convert this.tasks array to a string 
+    save() {
+        // Create a JSON string of the tasks
+        const tasksJson = JSON.stringify(this.tasks);
+    
+        // Store the JSON string in localStorage
+        localStorage.setItem("tasks", tasksJson);
+    
+        // Convert the currentId to a string;
+        const currentId = String(this.currentId);
+    
+        // Store the currentId in localStorage
+        localStorage.setItem("currentId", currentId);
+    }
+
+    // Converting saved JSON for this.tasks to an array when
+    // we load the tasks
+    load() {
+        // Check if any tasks are saved in localStorage
+        if (localStorage.getItem("tasks")) {
+            // Get the JSON string of tasks in localStorage
+            const tasksJson = localStorage.getItem("tasks");
+    
+            // Convert it to an array and store it in our TaskManager
+            this.tasks = JSON.parse(tasksJson);
+        }
+    
+        // Check if the currentId is saved in localStorage
+        if (localStorage.getItem("currentId")) {
+          // Get the currentId string in localStorage
+            const currentId = localStorage.getItem("currentId");
+    
+          // Convert the currentId to a number and store it in our TaskManager
+            this.currentId = Number(currentId);
+        }
+    }
+    
 };

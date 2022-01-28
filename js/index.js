@@ -1,22 +1,3 @@
-// Finding and Display the Date Object
-const dateElement = document.querySelector("#date-element");
-let today = new Date();
-const [month, day, year] = [today.getMonth() + 1, today.getDate(), today.getFullYear()];
-let dateString = `Current Date: ${day}/${month}/${year}`;
-dateElement.innerHTML = dateString;
-
-// Collapsible Task - Rotate down arrow when clicked
-
-$(".rotate").click(function () {
-    $(this).toggleClass("down");
-})
-
-
-// const downArrow = document.getElementById('downArrow');
-// const collapseFunc = () => downArrow.classList.toggle("down");
-
-// downArrow.addEventListener('click', collapseFunc);
-
 // Initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(0);
 // console.log(taskManager); // for testing
@@ -31,9 +12,57 @@ const taskManager = new TaskManager(0);
 // to print the name of tasks with index 0
 // console.log(taskManager.tasks[0].name); // returns name1
 
+
+
 // testing createTaskHtml
 const taskHtml = createTaskHtml();
 // console.log(taskHtml);
+
+// Finding and Display the Date Object
+const dateElement = document.querySelector("#date-element");
+let today = new Date();
+const [month, day, year] = [today.getMonth() + 1, today.getDate(), today.getFullYear()];
+let dateString = `Current Date: ${day}/${month}/${year}`;
+dateElement.innerHTML = dateString;
+
+// Load the tasks from localStorage
+taskManager.load();
+// Render the loaded tasks to the page
+taskManager.render();
+
+// Collapsible Task - Rotate down arrow when clicked
+
+$(".rotate").click(function () {
+    $(this).toggleClass("down");
+})
+
+
+// const downArrow = document.getElementById('downArrow');
+// const collapseFunc = () => downArrow.classList.toggle("down");
+
+// downArrow.addEventListener('click', collapseFunc);
+
+// scroll to top button
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  behavior: "smooth";
+}
 
 
 // Validating form
@@ -45,8 +74,8 @@ const newTaskDescriptionEl = document.getElementById('newTaskDescription');
 const newTaskAssignedToEl = document.getElementById('newAssignedTo');
 const newTaskDueDateEl = document.getElementById('newTaskDueDate');
 const newListNameEl = document.getElementById('newListName');
-const newTaskStatusEl = document.getElementById('newTaskStatus')
-const newTaskPriorityEl = document.getElementById('newTaskPriority')
+const newTaskStatusEl = document.getElementById('newTaskStatus');
+const newTaskPriorityEl = document.getElementById('newTaskPriority');
 const addListTaskNameEl = document.getElementById('listTaskName');
 const addListTaskDescriptionEl = document.getElementById('listTaskDescription');
 const addListAssignedToEl = document.getElementById('listAssignedTo');
@@ -60,6 +89,7 @@ const editTaskListNameEl = document.getElementById('editTaskListName');
 const editTaskDueDateEl = document.getElementById('editTaskDueDate');
 const editTaskStatusEl = document.getElementById('editTaskStatus');
 const tasksListHtml = document.getElementById('tasksList');
+const buttonIconsEl = document.getElementsByClassName('button-icons');
 
 
 // The following isRequired() function returns true if the input argument is empty:
@@ -472,7 +502,12 @@ addToListTaskForm.addEventListener('submit', function(event) {
         // }
         // Adding task to the taskManager
         taskManager.addTask(name, description, assignedTo, dueDate, status, priority);
+        
+        // saving tasks persistently on local storage
+        taskManager.save()
+
         taskManager.render();
+
 
         console.log(taskManager.tasks); // to check tasks
         // console.log(tasksListHtml.innerHTML); // to check HTML for tasksList
@@ -518,12 +553,15 @@ function checkboxFunction(event) {
         // console.log(taskId)
         // Get the task from the TaskManager using the taskId
         const task = taskManager.getTaskById(taskId);
-        console.log(task)
+        // console.log(task)
         // Update the task status to 'Done'
         
         task.status = 'Done';
         // console.log(task);
 
+        buttonIconsEl.innerHTML='';
+
+        taskManager.save()
         // Render the tasks
         taskManager.render();
 
@@ -805,3 +843,15 @@ editTaskForm.addEventListener('input', debounce(function (event) {
     }
 }));
 
+
+
+// const greetingMessage = document.querySelector('#greetingMessage')
+// if(greetingMessage.is(':empty') ) {
+//     greetingMessage.innerHTML = "
+//     <!-- Greeting Message -->
+//     <li class="list-group-item ${status != 'Done' ? 'visible' : 'invisible'}">
+//     <h5>Welcome! 😎</h5>
+//     <p>Start adding tasks by clicking "Add to List" button</p>
+//     </li>
+//     "
+// }
