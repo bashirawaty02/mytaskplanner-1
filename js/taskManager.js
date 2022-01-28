@@ -21,7 +21,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
                 <div class="button-icons">
                     <span class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></span>
                     <span class="fa fa-trash fa-lg trash-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#deleteTaskModal"></span> 
-                    <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span>
+                    <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"><span></span></span>
                 </div>
                 </div>
                 <div id="collapse${id}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${id}">
