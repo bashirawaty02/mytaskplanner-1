@@ -7,11 +7,6 @@
     }
 
 
-.container {
-    /* display: flex; */
-    /* border: 1px solid red; */
-}
-
 .emoji {
     font-family: 'segoe-ui-emoji-normal', sans-serif;
 }
@@ -48,10 +43,6 @@
     justify-content: space-between;
     font-weight: 700;
     /* border: 1px solid red; */
-}
-
-.button-icons {
-    /* font-size: 25px; */
 }
 
 .icons {
@@ -133,7 +124,7 @@ html {
     text-decoration: line-through;
 }
 
-/* empty state */
+/* empty state message */
 .empty-state {
     padding: 10px;
     display: none;

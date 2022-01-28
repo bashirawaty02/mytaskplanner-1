@@ -44,7 +44,7 @@ $(".rotate").click(function () {
 
 // scroll to top button
 //Get the button
-var mybutton = document.getElementById("myBtn");
+const mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
@@ -90,7 +90,7 @@ const editTaskDueDateEl = document.getElementById('editTaskDueDate');
 const editTaskStatusEl = document.getElementById('editTaskStatus');
 const tasksListHtml = document.getElementById('tasksList');
 const buttonIconsEl = document.getElementsByClassName('button-icons');
-
+const deleteTaskModalEl = document.getElementById('deleteTaskModal');
 
 // The following isRequired() function returns true if the input argument is empty:
 const isRequired = value => value === '' ? false : true; // ternary operator - if empty, return false & if not empty, return true
@@ -541,9 +541,9 @@ addToListTaskForm.addEventListener('submit', function(event) {
     }
 });
 
-tasksListHtml.onclick = checkboxFunction;
+tasksListHtml.onclick = checkboxDeleteFunction;
 
-function checkboxFunction(event) {
+function checkboxDeleteFunction(event) {
     if (event.target.classList.contains('done-checkbox')) {
         // Get the parent Task
         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -559,15 +559,39 @@ function checkboxFunction(event) {
         task.status = 'Done';
         // console.log(task);
 
-        buttonIconsEl.innerHTML='';
+        console.log(taskManager.tasks); // to check tasks
 
-        taskManager.save()
+        // Save the tasks to localStorage
+        taskManager.save();
+
         // Render the tasks
         taskManager.render();
 
         // parentTask.setAttribute('class', 'stroked');
-        console.log(parentTask);
+        // console.log(parentTask); // to check on parentTask
     }
+
+    deleteTaskModalEl.addEventListener('click', function() {
+     // Check if a "Delete" button was clicked
+        if (event.target.classList.contains("delete-button")) {
+        // Get the parent Task
+        const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+
+        // Get the taskId of the parent Task.
+        const taskId = Number(parentTask.dataset.taskId);
+
+        // Delete the task
+        taskManager.deleteTask(taskId);
+
+        console.log(taskManager.tasks); // to check tasks
+
+        // Save the tasks to localStorage
+        taskManager.save();
+
+        // Render the tasks
+        taskManager.render();
+        }
+    })
 };
 
 // Add an 'onclick' event listener to the Tasks List

@@ -19,8 +19,8 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
                 </div>
                 
                 <div class="button-icons">
-                    <span class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></span>
-                    <span class="fa fa-trash fa-lg trash-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#deleteTaskModal"></span> 
+                    <i class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></i>
+                    <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target="#deleteTaskModal"></span>
                     <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"><span></span></span>
                 </div>
                 </div>
@@ -154,4 +154,23 @@ class TaskManager {
         }
     }
     
+    deleteTask(taskId) {
+    // Create an empty array and store it in a new variable, newTasks
+    const newTasks = [];
+
+    // Loop over the tasks
+    for (let i = 0; i < this.tasks.length; i++) {
+        // Get the current task in the loop
+        const task = this.tasks[i];
+
+        // Check if the task id is not the task id passed in as a parameter
+        if (task.id !== taskId) {
+        // Push the task to the newTasks array
+        newTasks.push(task);
+        }
+    }
+
+    // Set this.tasks to newTasks
+    this.tasks = newTasks;
+    }
 };
