@@ -42,6 +42,7 @@
       <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
      </div>
     
+    
     <!-- Task button -->
     <!-- Button trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -123,7 +124,7 @@
                   <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
                   <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
                   <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-                  <option value="Priority 4"><span class="emoji">⬜</span> Priority 4</option>
+                  <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
                 </select>
                 <div class="invalid-feedback">Example invalid custom select feedback</div>
               </div>
@@ -213,7 +214,7 @@
               <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
               <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
               <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-              <option value="Priority 4"><span class="emoji">⬜</span> Priority 4</option>
+              <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
             </select>
             <div class="invalid-feedback">Example invalid custom select feedback</div>
           </div>
@@ -341,7 +342,7 @@
                                   <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
                                   <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
                                   <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-                                  <option value="Priority 4"><span class="emoji">⬜</span> Priority 4</option>
+                                  <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
                                 </select>
                                 <div class="invalid-feedback">Example invalid custom select feedback</div>
                               </div>
@@ -367,13 +368,21 @@
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
-                                <ul class=" list-group list-group-flush" id="tasksList">                                 
-                                  
+                              
+
+                                <ul class=" list-group list-group-flush tasksList" id="tasksList"></ul>  
+                                <!-- add the empty state here. Used to display message when task list is empty -->
+                                <div class="empty-state">
+                                  <h5 class="empty-state__title">Welcome! 😎</h2>
+                                  <p class="empty-state__description">Start adding tasks by clicking "Add to List" button</p>
+                                </div>
+                                <!-- end -->
+
                                   <!-- Greeting Message -->
-                                  <li class="list-group-item">
-                                            <h5>Welcome! 😎</h5>
-                                            <p>Start adding tasks by clicking "Add to List" button</p>
-                                </li>
+                                  <!-- <li class="list-group-item">
+                                    <h5>Welcome! 😎</h5>
+                                    <p>Start adding tasks by clicking "Add to List" button</p>
+                                  </li> -->
 
                                   <!-- List item 1 -->
                                   <!-- <li class="list-group-item">
@@ -487,7 +496,7 @@
                                     </div> -->
                                 <!-- </li> -->
                                 
-                            </ul>
+                            <!-- </ul> -->
                         </div>
                     </div>
                 </perfect-scrollbar>
@@ -500,6 +509,9 @@
         </div>
     </div>
     
+    <footer>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-lg"></i></button>
+    </footer>
 
 
     <!-- Optional JavaScript -->
@@ -509,5 +521,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/taskManager.js"></script>
     <script src="./js/index.js"></script>
+    
+ 
+
+    
   </body>
 </html>

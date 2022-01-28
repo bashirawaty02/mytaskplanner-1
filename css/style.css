@@ -25,13 +25,17 @@
         background-color: #555; /* Add a dark-grey background on hover */
       }    
 
+
 .emoji {
     font-family: 'segoe-ui-emoji-normal', sans-serif;
 }
 
 .container {
-    min-width: 400px;
-    max-width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     /* box-shadow: 0 40px 60px -20px rgba(102, 101, 105, 0.15); */
     /* border: 1px solid red; */
 }
@@ -60,23 +64,50 @@
     /* border: 1px solid red; */
 }
 
+
 .icons {
     cursor: pointer;
     margin-left: 20px;
+    border: none;    
 }
 
 .edit-icon {
     color: green;
+    
 }
 
 .trash-icon {
     color: red;
-    margin-bottom: px;
 }
 
 /* .blank {
     flex: 1;
 } */
+
+/* smooth scrolling to top button */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: rgb(23, 107, 233);
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#myBtn:hover {
+background-color: rgb(2, 71, 173);
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 
 /* to change background of task cards for mouse hover */
@@ -112,3 +143,18 @@
 .stroked {
     text-decoration: line-through;
 }
+
+/* empty state */
+.empty-state {
+    padding: 10px;
+    display: none;
+}
+
+.tasksList:empty {
+    display: none;
+}
+
+.tasksList:empty + .empty-state {
+    display: grid;
+}
+
