@@ -32,9 +32,9 @@ taskManager.render();
 
 // Collapsible Task - Rotate down arrow when clicked
 
-$(".rotate").click(function () {
-    $(this).toggleClass("down");
-})
+// $(".rotate").click(function () {
+//     $(this).toggleClass("down");
+// })
 
 
 // const downArrow = document.getElementById('downArrow');
@@ -444,23 +444,23 @@ addToListTaskForm.addEventListener('reset', function() {
     
     addListTaskNameEl.parentElement.querySelector('small').innerText = '';
     addListTaskNameEl.parentElement.classList.remove('error', 'success');
-    addListTaskNameEl.parentElement.classList.add('error');
+    // addListTaskNameEl.parentElement.classList.add('error');
     
     addListTaskDescriptionEl.parentElement.querySelector('small').innerText = '';
     addListTaskDescriptionEl.parentElement.classList.remove('error', 'success');
-    addListTaskDescriptionEl.parentElement.classList.add('error');
+    // addListTaskDescriptionEl.parentElement.classList.add('error');
     
     addListAssignedToEl.parentElement.querySelector('small').innerText = '';
     addListAssignedToEl.parentElement.classList.remove('error', 'success');
-    addListAssignedToEl.parentElement.classList.add('error');
+    // addListAssignedToEl.parentElement.classList.add('error');
     
     addListTaskDueDateEl.parentElement.querySelector('small').innerText = '';
     addListTaskDueDateEl.parentElement.classList.remove('error', 'success');
-    addListTaskDueDateEl.parentElement.classList.add('error');
+    // addListTaskDueDateEl.parentElement.classList.add('error');
     
     addListTaskStatusEl.parentElement.querySelector('small').innerText = '';
     addListTaskStatusEl.parentElement.classList.remove('error', 'success');
-    addListTaskStatusEl.parentElement.classList.add('error');
+    // addListTaskStatusEl.parentElement.classList.add('error');
     
 });
 
@@ -522,19 +522,19 @@ addToListTaskForm.addEventListener('submit', function(event) {
 
         // reset border colour to red
         addListTaskNameEl.parentElement.classList.remove('error', 'success');
-        addListTaskNameEl.parentElement.classList.add('error');
+        // addListTaskNameEl.parentElement.classList.add('error');
         
         addListTaskDescriptionEl.parentElement.classList.remove('error', 'success');
-        addListTaskDescriptionEl.parentElement.classList.add('error');
+        // addListTaskDescriptionEl.parentElement.classList.add('error');
         
         addListAssignedToEl.parentElement.classList.remove('error', 'success');
-        addListAssignedToEl.parentElement.classList.add('error');
+        // addListAssignedToEl.parentElement.classList.add('error');
         
         addListTaskDueDateEl.parentElement.classList.remove('error', 'success');
-        addListTaskDueDateEl.parentElement.classList.add('error');
+        // addListTaskDueDateEl.parentElement.classList.add('error');
         
         addListTaskStatusEl.parentElement.classList.remove('error', 'success');
-        addListTaskStatusEl.parentElement.classList.add('error');
+        // addListTaskStatusEl.parentElement.classList.add('error');
         
         // close modal form
         $('#addToListModal').modal('hide'); // or $('#IDModal').modal('toggle');
@@ -571,7 +571,7 @@ function checkboxDeleteFunction(event) {
         // console.log(parentTask); // to check on parentTask
     }
 
-    deleteTaskModalEl.addEventListener('click', function() {
+    document.getElementById('deleteButton').addEventListener('click', function() {
      // Check if a "Delete" button was clicked
         if (event.target.classList.contains("delete-button")) {
         // Get the parent Task

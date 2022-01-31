@@ -37,11 +37,7 @@
       <h1 style="border: rgb(36, 35, 35) 2px dotted">To-do List</h1> 
       
     </div>
-    <!-- Scroll to top-->
-     <div>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-     </div>
-    
+   
     
     <!-- Task button -->
     <!-- Button trigger modal -->
@@ -156,67 +152,65 @@
         <form id="editTaskForm" method="POST">
 
           <!-- Form: Task Name -->
-          <div class="mb-3 form-field error">
-            <label for="editTaskName" class="col-form-label" style="display:None">Task Name</label>
+          <div class="form-group required form-field">
+            <label for="editTaskName" class="col-form-label">Task Name</label>
             <input type="text" class="form-control" id="editTaskName" placeholder="Task Name">
             <small></small>
           </div>
 
           <!-- Form: Description -->
-          <div class="mb-3 form-field error">
-            <label for="editTaskDescription" style="display:none">Description</label>
+          <div class="form-group required form-field">
+            <label for="editTaskDescription" class="col-form-label">Description</label>
             <textarea class="form-control" id="editTaskDescription" placeholder="Description"></textarea>
             <small></small>
           </div>
 
-          <!-- Form: Assigned To -->
-          <div class="mb-3 form-field error">
-            <label for="editAssignedTo" class="col-form-label" style="display:none">Assigned to</label>
-            <input type="text" class="form-control" id="editAssignedTo" placeholder="Assigned to">
-            <small></small>
+          <div class="form-row">
+            <!-- Form: Assigned To -->
+            <div class="form-group required form-field col-md-6">
+              <label for="editAssignedTo" class="col-form-label">Assigned to</label>
+              <input type="text" class="form-control" id="editAssignedTo" placeholder="Assigned to">
+              <small></small>
+            </div>
+
+
+            <!-- Form: Select Date -->
+            <div class="form-group required form-field col-md-6">
+              <label for="editTaskDueDate" class="col-form-label">Due Date</label>
+              <input type="date" class="form-control" id="editTaskDueDate" value="Due date">
+              <small></small>
+            </div>
           </div>
 
-          <!-- Form: Label -->
-          <!-- <div class="mb-3 mb-3 form-field error">
-            <label for="editTaskListName" class="col-form-label" style="display:none">List Name</label>
-            <input type="text" class="form-control" id="editTaskListName" placeholder="List Name">
-            <small></small>
-            </div> -->
+          <div class="form-row">
 
-          <!-- Form: Select Date -->
-          <div class="mb-3 form-field error">
-            <label for="editTaskDueDate" style="display:none">Due Date</label>
-            <input type="date" class="form-control" id="editTaskDueDate" value="Due date">
-            <small></small>
-          </div>
-
-          
-          <!-- Form: Status -->
-                  
-          <div class="mb-3 form-field error">
-            <label for="editTaskStatus" style="display: none">Select status:</label>
-            <select class="form-control" id="editTaskStatus">
-              <option value="">Status option</option>
-              <option value="To Do">To Do</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Review">Review</option>
-              <option value="Done">Done</option>
-            </select>
-            <small></small>
-          </div>
-
-          <!-- Form: Priority Options -->
-
-          <div class="form-group">
-            <label for="editTaskPriority" style="display: none">Select priority:</label>
-            <select class="form-control" id="editTaskPriority">
-              <option value="">Priority option</option>
-              <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
-              <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
-              <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-              <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
-            </select>
-            <div class="invalid-feedback">Example invalid custom select feedback</div>
+            <!-- Form: Status -->
+                                      
+            <div class="form-group required form-field col-md-6">
+              <label for="editTaskStatus" class="col-form-label">Status</label>
+              <select class="form-control" id="editTaskStatus">
+                <option value="">Status option</option>
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Review">Review</option>
+                <option value="Done">Done</option>
+              </select>
+              <small></small>
+            </div>
+  
+            <!-- Form: Priority Options -->
+  
+            <div class="form-group form-field col-md-6">
+              <label for="editTaskPriority" class="col-form-label">Priority</label>
+              <select class="form-control" id="editTaskPriority">
+                <option value="">Priority option</option>
+                <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
+                <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
+                <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
+                <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
+              </select>
+              <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>
           </div>
                                                       
 
@@ -251,15 +245,15 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="delete btn btn-info btn-md" data-dismiss="modal">Delete</button>
+            <button type="button" class="delete btn btn-info btn-md" id="deleteButton" data-dismiss="modal">Delete</button>
           </div>
         </div>
       </div>
     </div>
 
       <!-- Task Card -->
-      <div class="row d-flex justify-content-center container">
-        <div class="col-md-8">
+      <div class="row justify-content-center tasks-container">
+        <div class="col-md-5">
             <div class="card-hover-shadow-2x mb-3 card">
                 <div class="card-header-tab card-header ">
                   <div class="d-flex w-100 mb-3 justify-content-between align-items-center">          
@@ -291,37 +285,87 @@
                             <form id="addToListTaskForm" method="POST">
 
                               <!-- Form: Task Name -->
-                              <div class="mb-3 form-field error">
+                              <div class="form-group required form-field">
+                                  <label for="listTaskName" class="col-form-label">Task Name</label>
+                                  <input type="text" class="form-control " id="listTaskName" placeholder="Task Name">
+                                  <small></small>
+                                </div>
+
+                                <!-- Form: Description -->
+                                <div class="form-group required form-field">
+                                  <label for="listTaskDescription" class="col-form-label">Description</label>
+                                    <textarea class="form-control" id="listTaskDescription" placeholder="Description"></textarea>
+                                    <small></small>
+                                </div>
+
+                                <div class="form-row">
+
+                                  <!-- Form: Assigned To -->
+                                  <div class="form-group required form-field col-md-6">
+                                    <label for="listAssignedTo" class="col-form-label">Assigned to</label>
+                                    <input type="text" class="form-control" id="listAssignedTo" placeholder="Assigned to">
+                                    <small></small>
+                                  </div>
+
+                                  <!-- Form: Due Date -->
+                                  <div class="form-group required form-field col-md-6">
+                                    <label for="listTaskDueDate" class="col-form-label">Due Date</label>
+                                    <input type="date" class="form-control" id="listTaskDueDate" value="Due date">
+                                    <small></small>
+                                  </div>
+                                </div>
+
+                                
+                                <div class="form-row">
+                                  <!-- Form: Status -->
+                                      
+                                  <div class="form-group required form-field col-md-6">
+                                    <label for="listTaskStatus" class="col-form-label">Status</label>
+                                    <select class="form-control" id="listTaskStatus">
+                                      <option value="">Status option</option>
+                                      <option value="To Do">To Do</option>
+                                      <option value="In Progress">In Progress</option>
+                                      <option value="Review">Review</option>
+                                      <option value="Done">Done</option>
+                                    </select>
+                                    <small></small>
+                                  </div>
+
+                                  <!-- Form: Priority Options -->
+
+                                  <div class="form-group form-field col-md-6">
+                                    <label for="listTaskPriority" class="col-form-label">Priority</label>
+                                    <select class="form-control" id="listTaskPriority">
+                                      <option value="">Priority option</option>             
+                                      <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
+                                      <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
+                                      <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
+                                      <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
+                                    </select>
+                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                  </div>
+                                </div>
+
+                              <!-- Form: Task Name -->
+                              <!-- <div class="col-2 mb-3 form-field error">
                                 <label for="listTaskName" class="col-form-label" style="display:None">Task Name</label>
                                 <input type="text" class="form-control " id="listTaskName" placeholder="Task Name">
                                 <small></small>
-                              </div>
+                              </div> -->
 
                               <!-- Form: Description -->
-                              <div class="mb-3 form-field error">
+                              <!-- <div class="col-12 mb-3 form-field error">
                                 <label for="listTaskDescription" style="display:none">Description</label>
                                 <textarea class="form-control" id="listTaskDescription" placeholder="Description"></textarea>
                                 <small></small>
-                              </div>
+                              </div> -->
 
-                              <!-- Form: Assigned To -->
-                              <div class="mb-3 form-field error">
-                                <label for="listAssignedTo" class="col-form-label" style="display:none">Assigned to</label>
-                                <input type="text" class="form-control" id="listAssignedTo" placeholder="Assigned to">
-                                <small></small>
-                                </div>
-
-                              <!-- Form: Select Date -->
-                              <div class="mb-3 form-field error">
-                                <label for="listTaskDueDate" style="display:none">Due Date</label>
-                                <input type="date" class="form-control" id="listTaskDueDate" value="Due date">
-                                <small></small>
-                              </div>
+                                
 
                               
                               <!-- Form: Status -->
                                       
-                              <div class="mb-3 form-field error">
+                              <!-- <div class="mb-3 form-field error">
                                 <label for="listTaskStatus" style="display: none">Select status:</label>
                                 <select class="form-control" id="listTaskStatus">
                                   <option value="">Status option</option>
@@ -331,11 +375,11 @@
                                   <option value="Done">Done</option>
                                 </select>
                                 <small></small>
-                              </div>
+                              </div> -->
 
                               <!-- Form: Priority Options -->
 
-                              <div class="form-group">
+                              <!-- <div class="form-group">
                                 <label for="listTaskPriority" style="display: none">Select priority:</label>
                                 <select class="form-control" id="listTaskPriority">
                                   <option value="">Priority option</option>             
@@ -345,7 +389,7 @@
                                   <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
                                 </select>
                                 <div class="invalid-feedback">Example invalid custom select feedback</div>
-                              </div>
+                              </div> -->
 
                               
 

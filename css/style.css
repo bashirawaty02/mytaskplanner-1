@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
+
 .header {
 
     background-color: rgb(120, 161, 238);
     text-align: center;
-    width: 100%
+    width: 100vw;
 
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    /* border: 1px solid red; */
 }
 
 /* smooth scrolling to top button */
@@ -18,7 +25,9 @@
     background-color: rgb(23, 107, 233);; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 10px; /* Some padding */
+    padding: 8px; /* Some padding */
+    padding-left: 12px;
+    padding-right: 12px;
     border-radius: 10px; /* Rounded corners */
     font-size: 20px; /* Increase font size */
 }
@@ -35,15 +44,6 @@ html {
     font-family: 'segoe-ui-emoji-normal', sans-serif;
 }
 
-.container {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* box-shadow: 0 40px 60px -20px rgba(102, 101, 105, 0.15); */
-    /* border: 1px solid red; */
-}
 
 /* to position task card's heading into a row */
 .widget-content .widget-content-wrapper {
@@ -65,7 +65,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: 700;
+    font-weight: 600;
     /* border: 1px solid red; */
 }
 
@@ -73,7 +73,7 @@ html {
 .icons {
     cursor: pointer;
     margin-left: 20px;
-    border: none;    
+    border: none;
 }
 
 .edit-icon {
@@ -89,6 +89,9 @@ html {
     flex: 1;
 } */
 
+.badge {
+    font-size: 50px;
+}
 
 
 /* to change background of task cards for mouse hover */
@@ -108,6 +111,10 @@ html {
 }
 
 /* to validate: error / success */
+.form-group.required .col-form-label:after {
+    content:"*";color:red;
+  }
+
 .form-field.error input, .form-field.error textarea, .form-field.error select {
     border-color: red;
 }

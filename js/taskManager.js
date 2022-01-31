@@ -8,21 +8,23 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
     <div class="todo-indicator bg-warning"></div>
     <div class="widget-content p-0">
         <div class="widget-content-wrapper">
-            <div class="widget-content-left mr-2">
-                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox${id} newTaskItem" type="checkbox"><label class="custom-control-label done-checkbox ${status != 'Done' ? 'visible' : 'invisible'}" for="exampleCustomCheckbox${id}"></label></div>
-                <div class="badge badge-pill badge-info ${status != 'Done' ? 'invisible' : 'visible'}">Done</div>
+            <div class="widget-content-left mr-2" id="widget-content-left-${id}">
+                <div class="custom-checkbox custom-control" id="custom-checkbox-${id}"> <input class="custom-control-input" id="exampleCustomCheckbox${id} newTaskItem" type="checkbox"><label class="custom-control-label done-checkbox ${status != 'Done' ? 'visible' : 'invisible'}" for="exampleCustomCheckbox${id}"></label></div>
+                
             </div>
             <div class="widget-content-right">
                 <div class="widget-heading">
-                <div class="task-title">
-                ${name}<div class="${priority === 'Priority 1' ? "badge badge-danger" : priority === 'Priority 2' ? "badge badge-warning" : priority === 'Priority 3' ? "badge badge-primary" : "badge badge-success"} ml-2 ${status != 'Done' ? 'visible' : 'invisible'}">${priority}</div>
-                </div>
-                
-                <div class="button-icons">
-                    <i class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'invisible'}" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                    <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target="#deleteTaskModal"></span>
-                    <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"><span></span></span>
-                </div>
+                    <div class="task-title">
+                    ${name}<div class="${priority === 'Priority 1' ? "badge badge-danger" : priority === 'Priority 2' ? "badge badge-warning" : priority === 'Priority 3' ? "badge badge-primary" : "badge badge-success"} ml-2 ${status != 'Done' ? 'visible' : 'invisible'}">${priority}</div>
+                    </div>
+                    
+                    <div class="button-icons">
+                        <h4><div class="badge">
+                        <div class="badge badge-pill badge-info ${status != 'Done' ? 'invisible' : 'visible'}">Done</div>
+                        <i class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#editTaskButtonModal"></i></>
+                        <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target="#deleteTaskModal"></span>
+                        <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span></badge></h4>
+                    </div>
                 </div>
                 <div id="collapse${id}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${id}">
                     <div class="widget-subheading"><small>Assigned To: ${assignedTo}</small></div>
@@ -35,7 +37,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
 
 
             
-</li>
+    </li>
     `
     return html;
 }
@@ -113,6 +115,10 @@ class TaskManager {
         // Set the inner html of the tasksList on the page
         const tasksList = document.querySelector('#tasksList');
         tasksList.innerHTML = tasksHtml;
+
+        $(".rotate").click(function () {
+            $(this).toggleClass("down");
+        })
 
     }
 
