@@ -575,7 +575,7 @@ function checkboxDeleteFunction(event) {
      // Check if a "Delete" button was clicked
         if (event.target.classList.contains("delete-button")) {
         // Get the parent Task
-        const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+        const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
         // Get the taskId of the parent Task.
         const taskId = Number(parentTask.dataset.taskId);
