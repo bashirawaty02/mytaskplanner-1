@@ -114,18 +114,18 @@
                         </button>
                       </div>
                       
-                        <!-- Add to List Form Modal -->
+                        <!-- Add to List Form Modal (MAIN FORM) -->
                       <div class="modal fade" id="addToListModal" tabindex="-1" role="dialog" aria-labelledby="addToListModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="addToListModal">Add to list</h5>
+                              <h5 class="modal-title" id="addToListModal">Add New Task</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
-                              <!-- Add to List Bootstrap form -->
+                              <!-- Add to List Bootstrap form (MAIN FORM) -->
                               <form id="addToListTaskForm" method="POST">
 
                                 <!-- Form: Task Name -->
@@ -373,7 +373,7 @@
             <h4 class="city">Weather in Sydney</h4>
             <h1 class="temp">32°C</h1>
             <div class="flex">
-              <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
+              <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon weather-icon" />
               <div class="description">Cloudy</div>
             </div>
             <!-- <div class="humidity">Humidity: 60%</div>
@@ -411,8 +411,8 @@
               
               <!-- Form: Task Name -->
               <div class="mb-3 form-field error">
-                <label for="newTaskName" class="col-form-label" style="display:None">Task Name</label>
-                <input type="text" class="form-control" name="taskName" id="newTaskName" placeholder="Task Name">
+                <label for="newTaskName" class="col-form-label" style="display:None">Task Name2</label>
+                <input type="text" class="form-control" name="taskName" id="newTaskName" placeholder="Task Name2">
                 <small></small>
               </div>
 
@@ -565,7 +565,7 @@
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
           <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" id="saveButton" type="submit">Submit</button>
+          <button class="btn btn-primary saveButton" id="saveButton" type="submit">Save</button>
         </div>
         </form>
       </div>

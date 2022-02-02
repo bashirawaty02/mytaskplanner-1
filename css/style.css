@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Work+Sans:wght@400;500;800&display=swap');
 
 /* .header {
 
@@ -7,6 +7,11 @@
     width: 100vw;
 
 } */
+
+* {
+    /* font-family: 'Raleway', 'sans-serif'; */
+    letter-spacing: 0.5px;
+}
 
 /* sidebar */
 
@@ -39,7 +44,7 @@
     /* color: white; */
 }
 
-.side-menu {
+/* .side-menu {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
@@ -71,7 +76,7 @@
     width: 18px;
     height: 18px;
     font-size: 11px;
-}
+} */
 
 /* top navigation bar */
 .navbar {
@@ -85,7 +90,7 @@
 
 /* body */
 body {
-    font-family: 'Raleway', sans-serif;
+    
     background: url('https://source.unsplash.com/1920x1080/?landscape') no-repeat;
     background-position: center;
     background-size: cover;
@@ -117,6 +122,10 @@ body {
 .widgets {
     justify-self: start;
     /* grid-area: rightside; */
+}
+
+form {
+    font-weight: bold;
 }
 
 /* fixing attribution to the bottom of page */
@@ -209,6 +218,10 @@ html {
     color: rgba(54, 54, 54, 0.918);
 }
 
+.weather-icon {
+    background-color: ;
+}
+
 .drag-icon {
     color: rgb(207, 207, 207);
 }
@@ -262,7 +275,7 @@ li.over {
 /* to validate: error / success */
 .form-group.required .col-form-label:after {
     content:"*";color:red;
-  }
+}
 
 .form-field.error input, .form-field.error textarea, .form-field.error select {
     border-color: red;

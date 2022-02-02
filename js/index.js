@@ -598,31 +598,75 @@ function checkboxDeleteFunction(event) {
         }
     })
 
+    document.getElementById('saveButton').addEventListener('click', function() {
+        if (event.target.classList.contains("edit-button")) {
+            const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                // console.log(parentTask)
+                // Get the taskId of the parent Task.
+            const taskId = Number(parentTask.dataset.taskId);
+            console.log(taskId);
+            // Get the task from the TaskManager using the taskId
+            const task = taskManager.getTaskById(taskId);
+            console.log(task);
+            // Updating task element values
+            
+            task.name = editTaskNameEl.value;
+            task.description = editTaskDescriptionEl.value;
+            task.assignedTo = editAssignedToEl.value;
+            task.dueDate = editTaskDueDateEl.value;
+            task.status = editTaskStatusEl.value;
+            task.priority = editTaskPriorityEl.value;
+    
+            console.log(taskManager.tasks); // to check tasks
+    
+            // Save the tasks to localStorage
+            taskManager.save();
+    
+            // Render the tasks
+            taskManager.render();
+        
+        }
+    });
+
 };
 
-// Add an 'onclick' event listener to the Tasks List
-// tasksListHtml.addEventListener('click', (event) => {
-//     // Check if a "Mark As Done" button was clicked
-//     if (event.target.classList.contains('done-checkbox')) {
-//         // Get the parent Task
-//         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-//         // console.log(parentTask)
-//         // Get the taskId of the parent Task.
-//         const taskId = Number(parentTask.dataset.taskId);
-//         // console.log(taskId)
-//         // Get the task from the TaskManager using the taskId
-//         const task = taskManager.getTaskById(taskId);
-//         console.log(task)
-//         // Update the task status to 'Done'
-//         parentTask.classList.add('stroked');
-//         console.log(parentTask);
-//         task.status = 'Done';
-//         // console.log(task);
 
-//         // Render the tasks
-//         taskManager.render();
+// document.getElementById('saveButton').addEventListener('click', function() {
+//     // prevent the form from submitting
+//     // event.preventDefault();
+//     if (event.target.classList.contains("edit-button")) {
+//         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+//         console.log(parentTask);
+//             // console.log(parentTask)
+//             // Get the taskId of the parent Task.
+//             const taskId = Number(parentTask.dataset.taskId);
+//             console.log(taskId)
+//             // Get the task from the TaskManager using the taskId
+//             const task = taskManager.getTaskById(taskId);
+//             console.log(task)
+//             // Update the task status to 'Done'
+            
+//             task.name = editTaskNameEl.value;
+//             task.description = editTaskDescriptionEl.value;
+//             task.assignedTo = editAssignedToEl.value;
+//             task.dueDate = editTaskDueDateEl.value;
+//             task.status = editTaskStatusEl.value;
+//             task.priority = editTaskPriorityEl.value;
+//             // console.log(task);
+    
+//             console.log(taskManager.tasks); // to check tasks
+    
+//             // Save the tasks to localStorage
+//             taskManager.save();
+    
+//             // Render the tasks
+//             taskManager.render();
+    
+//             // parentTask.setAttribute('class', 'stroked');
+//             // console.log(parentTask); // to check on parentTask
 //     }
 // });
+
 
 // VALIDATING EDIT FORM
 const editCheckTaskName = () => {
@@ -774,6 +818,9 @@ editTaskForm.addEventListener('reset', function() {
     
 });
 
+
+
+
 editTaskForm.addEventListener('submit', function(event) {
     // prevent the form from submitting
     event.preventDefault();
@@ -793,65 +840,55 @@ editTaskForm.addEventListener('submit', function(event) {
         isTaskDescriptionValid && isAssignedToValid
         && isDueDateValid && isStatusValid;
 
-    if(isFormValid) {
-        // addNewTaskForm.submit(); // commented out to prevent form from being submitted
-        // Getting the values of the inputs
-        const name = editTaskNameEl.value;
-        const description = editTaskDescriptionEl.value;
-        const assignedTo = editAssignedToEl.value;
-        const dueDate = editTaskDueDateEl.value;
-        let status = editTaskStatusEl.value;
-        const priority = editTaskPriorityEl.value;
-        // let id;
+    // if(isFormValid) {
+    //     // addNewTaskForm.submit(); // commented out to prevent form from being submitted
+    //     // Getting the values of the inputs
+    //     document.getElementById('saveButton').addEventListener('click', function(event) {
+    //         if (event.target.classList.contains("edit-button")) {
+    //             const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+    //             console.log(parentTask);
+    //                 // console.log(parentTask)
+    //                 // Get the taskId of the parent Task.
+    //                 const taskId = Number(parentTask.dataset.taskId);
+    //                 console.log(taskId);
+    //                 // Get the task from the TaskManager using the taskId
+    //                 const task = taskManager.getTaskById(taskId);
+    //                 console.log(task);
+    //                 // Updating task element values
+                    
+    
+    //                 // task.name = editTaskNameEl.value;
+    //                 // task.description = editTaskDescriptionEl.value;
+    //                 // task.assignedTo = editAssignedToEl.value;
+    //                 // task.dueDate = editTaskDueDateEl.value;
+    //                 // task.status = editTaskStatusEl.value;
+    //                 // task.priority = editTaskPriorityEl.value;
+            
+    //                 console.log(taskManager.tasks); // to check tasks
+                    
+    //                 // editTaskForm.submit();
 
-        // setting default value of status to 'To Do'
-        // if (status) {
-        //     status = status;
-        // } else {
-        //     status = 'To Do'
-        // }
-        document.getElementById('saveButton').addEventListener('click', function() {
-            // Check if a "Delete" button was clicked
-            if (event.target.classList.contains('edit-icon')) {
-            // Get the parent Task
-            // const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-            // console.log(parentTask);
 
-            // Get the taskId of the parent Task.
-            // const taskId = Number(parentTask.dataset.taskId);
-            const taskId = Number(event.target.dataset.taskId);
-    
-            // Get the task from the TaskManager using the taskId
-            const task = taskManager.getTaskById(taskId);
-            // console.log(task)
-
-            // Updating task
-            task.status = "Done";
-    
-            console.log(taskManager.tasks); // to check tasks
-    
-            // Save the tasks to localStorage
-            taskManager.save();
-    
-            // Render the tasks
-            taskManager.render();
-            }
+    //                 // Save the tasks to localStorage
+    //                 // taskManager.save();
+            
+    //                 // Render the tasks
+    //                 // taskManager.render();
+                    
+    //         }
+            
+    //     })
 
             if(isFormValid) {
                 editTaskForm.submit();
             }
-        })
+    
 
         
         
 
     
-    // const name = taskNameEl.value;
-    // const description = taskDescriptionEl.value;
-    // const assignedTo = taskAssignedToEl.value;
-    // const dueDate = newTaskDueDateEl.value;
-    // const status = newTaskStatusEl.value;
-    }
+    
 });
 
 
@@ -1025,6 +1062,3 @@ weatherForm.addEventListener("submit", function(event) {
   weatherForm.reset();
   input.focus();
 });
-
-
-
