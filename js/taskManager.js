@@ -4,12 +4,13 @@
 const createTaskHtml = (name, description, assignedTo, dueDate, status, priority, id) => {
     const html = `
     <!-- List item ${id} -->
-    <li class="list-group-item ${status != 'Done' ? '' : 'stroked'}" id="accordion${id}" data-task-id=${id}>
+    <li class="list-group-item ${status != 'Done' ? '' : 'stroked'} "draggable" draggable="true" " id="accordion${id}" data-task-id=${id}>
     <div class="todo-indicator bg-warning"></div>
     <div class="widget-content p-0">
         <div class="widget-content-wrapper">
             <div class="widget-content-left mr-2" id="widget-content-left-${id}">
-                <div class="custom-checkbox custom-control" id="custom-checkbox-${id}"> <input class="custom-control-input" id="exampleCustomCheckbox${id} newTaskItem" type="checkbox"><label class="custom-control-label done-checkbox ${status != 'Done' ? 'visible' : 'invisible'}" for="exampleCustomCheckbox${id}"></label></div>
+                <span><i class='fa fa-bars drag-icon '></i></span>
+                <div class="custom-checkbox custom-control ml-3" id="custom-checkbox-${id}"> <input class="custom-control-input" id="exampleCustomCheckbox${id} newTaskItem" type="checkbox"><label class="custom-control-label done-checkbox ${status != 'Done' ? 'visible' : 'invisible'}" for="exampleCustomCheckbox${id}"></label></div>
                 
             </div>
             <div class="widget-content-right">
@@ -20,10 +21,11 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
                     
                     <div class="button-icons">
                         <h4><div class="badge">
+                        
                         <div class="badge badge-pill badge-info ${status != 'Done' ? 'invisible' : 'visible'}">Done</div>
-                        <i class="fa fa-edit fa-lg edit-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#editTaskButtonModal"></i></>
+                        <i class="fa fa-edit fa-lg  edit-icon icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" data-target="#editTaskButtonModal" data-task-id=${id}></i>
                         <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target="#deleteTaskModal"></span>
-                        <span class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span></badge></h4>
+                        <span class="fa fa-chevron-down fa-md chevron-icon icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span></badge></h4>
                     </div>
                 </div>
                 <div id="collapse${id}" class="collapse" aria-labelledby="content-expansion" data-parent="#accordion${id}">
@@ -47,6 +49,7 @@ class TaskManager {
     constructor(currentId = 0) {
         this.tasks = [];
         this.currentId = currentId;
+        this.city = "Sydney";
     }
 
     // Create the addTask method
@@ -136,6 +139,9 @@ class TaskManager {
     
         // Store the currentId in localStorage
         localStorage.setItem("currentId", currentId);
+
+        const city = this.city;
+        localStorage.setItem("city", city);
     }
 
     // Converting saved JSON for this.tasks to an array when

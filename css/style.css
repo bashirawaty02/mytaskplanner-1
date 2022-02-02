@@ -1,16 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
 
-.header {
+/* .header {
 
     background-color: rgb(120, 161, 238);
     text-align: center;
     width: 100vw;
 
+} */
+
+/* sidebar */
+
+.wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.938);
+    width: 10vw;
+    min-height: 100vh;
+    /* height: 100vh; */
 }
 
+.left-side {
+    flex-basis: 240px;
+    border-right: 1px solid var(--border-color);
+    padding: 26px;
+    overflow: auto;
+    flex-shrink: 0;
+}
+
+.side-wrapper + .side-wrapper {
+    margin-top: 20px;
+}
+
+.side-title {
+    margin-bottom: 14px;
+    font-family: Raleway;
+    font-weight: bold;
+    /* color: white; */
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    a {
+        text-decoration: none;
+        color: var(--theme-color);
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+        transition: 0.3s;
+        &:hover {
+        background-color: var(--hover-menu-bg);
+        }
+    }
+    svg {
+        width: 16px;
+        margin-right: 8px;
+    }
+}
+
+.updates {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-left: auto;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+}
+
+/* top navigation bar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.658);
+    color: white;
+}
+
+.userName {
+    color: white;
+}
+
+/* body */
 body {
     font-family: 'Raleway', sans-serif;
+    background: url('https://source.unsplash.com/1920x1080/?landscape') no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    /* position: absolute; */
+    /* overflow-y: scroll; */
+    font: Raleway, sans-serif;
     /* border: 1px solid red; */
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* border: 1px solid red; */
+}
+
+.tasks-container {
+    margin-top: 5vh;
+    padding-right: 100px;
+    width: 40vw;
+    /* border: 1px solid red; */
+    /* grid-area: main; */
+}
+
+.tasks-container img {
+    height: 40vh;
+    margin: auto;
+}
+
+.widgets {
+    justify-self: start;
+    /* grid-area: rightside; */
+}
+
+/* fixing attribution to the bottom of page */
+.listIcon {
+    position: fixed;
+    bottom: 0;
+    color: grey;
 }
 
 /* smooth scrolling to top button */
@@ -54,6 +167,10 @@ html {
     /* max-width: 200px; */
     /* border: 1px solid red; */
 }
+.widget-content-left {
+    display: flex;
+    /* justify-content: space-between; */
+}
 
 .widget-content-right {
     /* border: 1px solid green; */
@@ -66,8 +183,11 @@ html {
     align-items: center;
     justify-content: space-between;
     font-weight: 600;
+    font-size: 1.15rem;
     /* border: 1px solid red; */
+    
 }
+
 
 
 .icons {
@@ -84,6 +204,35 @@ html {
 .trash-icon {
     color: red;
 }
+
+.chevron-icon {
+    color: rgba(54, 54, 54, 0.918);
+}
+
+.drag-icon {
+    color: rgb(207, 207, 207);
+}
+
+.drag-icon:hover {
+    cursor: move;
+    color:rgb(48, 47, 47);
+    transition: 0.5s ease-in-out;
+    /* border: 1px solid red; */
+}
+
+li.over {
+    transform: scale(1.1, 1.1);
+    border: 5px solid red;
+}
+
+/* .task-title {
+    cursor: move;
+} */
+
+.bell-icon {
+    color: white;
+}
+
 
 /* .blank {
     flex: 1;
@@ -130,12 +279,14 @@ html {
 /* used to strike off text in JS when it is marked as done */
 .stroked {
     text-decoration: line-through;
+    color: grey;
 }
 
 /* empty state message */
 .empty-state {
     padding: 10px;
     display: none;
+    font-size: 1.1rem;
 }
 
 .tasksList:empty {
@@ -146,3 +297,88 @@ html {
     display: grid;
 }
 
+/* weather card*/
+
+.weatherCard {
+    background: #eeeeee;
+    color: rgb(43, 42, 42);
+    padding: 1.2em;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 1px 4px #c5c5c5c9;
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.weatherForm {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    /* border: 1px solid red; */
+}
+
+.weatherButton {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 44px;
+    width: 44px;
+    outline: none;
+    background: #0000002b;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.4em 1em;
+    border-radius: 24px;
+    background: #7c7c7c2b;
+    color: rgb(48, 47, 47);
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+    flex: 1;
+}
+
+.weatherButton:hover {
+    background: #0000006b;
+}
+
+h1.temp {
+    margin: 0;
+    margin-bottom: 0.4em;
+}
+
+.description {
+    text-transform: capitalize;
+    margin-left: 8px;
+}
+
+#errorMsg {
+    color: red;
+}
+
+.weather.loading {
+    visibility: hidden;
+    max-height: 20px;
+    position: relative;
+}
+
+.weather.loading:after {
+    visibility: visible;
+    content: "Loading...";
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* media query */
+@media only screen and (max-width: 800px)  {
+    .widget-heading {
+        flex-wrap: wrap;
+    }
+}

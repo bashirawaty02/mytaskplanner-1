@@ -88,9 +88,11 @@ const editAssignedToEl = document.getElementById('editAssignedTo');
 const editTaskListNameEl = document.getElementById('editTaskListName');
 const editTaskDueDateEl = document.getElementById('editTaskDueDate');
 const editTaskStatusEl = document.getElementById('editTaskStatus');
+const editTaskPriorityEl = document.getElementById('editTaskPriority');
 const tasksListHtml = document.getElementById('tasksList');
 const buttonIconsEl = document.getElementsByClassName('button-icons');
 const deleteTaskModalEl = document.getElementById('deleteTaskModal');
+const errorMsgEl = document.getElementById("errorMsg");
 
 // The following isRequired() function returns true if the input argument is empty:
 const isRequired = value => value === '' ? false : true; // ternary operator - if empty, return false & if not empty, return true
@@ -135,6 +137,7 @@ const showSuccess = (input) => {
     const error = formField.querySelector('small');
     error.textContent = '';
 }
+
 
 // VALIDATING ADD NEW TASK FORM
 const newCheckTaskName = () => {
@@ -572,13 +575,15 @@ function checkboxDeleteFunction(event) {
     }
 
     document.getElementById('deleteButton').addEventListener('click', function() {
-     // Check if a "Delete" button was clicked
+        // Check if a "Delete" button was clicked
         if (event.target.classList.contains("delete-button")) {
         // Get the parent Task
         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+        // console.log(parentTask);
 
         // Get the taskId of the parent Task.
         const taskId = Number(parentTask.dataset.taskId);
+        // console.log(taskId);
 
         // Delete the task
         taskManager.deleteTask(taskId);
@@ -592,6 +597,7 @@ function checkboxDeleteFunction(event) {
         taskManager.render();
         }
     })
+
 };
 
 // Add an 'onclick' event listener to the Tasks List
@@ -744,15 +750,15 @@ editTaskForm.addEventListener('reset', function() {
     
     editTaskNameEl.parentElement.querySelector('small').innerText = '';
     editTaskNameEl.parentElement.classList.remove('error', 'success');
-    editTaskNameEl.parentElement.classList.add('error');
+    // editTaskNameEl.parentElement.classList.add('error');
     
     editTaskDescriptionEl.parentElement.querySelector('small').innerText = '';
     editTaskDescriptionEl.parentElement.classList.remove('error', 'success');
-    editTaskDescriptionEl.parentElement.classList.add('error');
+    // editTaskDescriptionEl.parentElement.classList.add('error');
     
     editAssignedToEl.parentElement.querySelector('small').innerText = '';
     editAssignedToEl.parentElement.classList.remove('error', 'success');
-    editAssignedToEl.parentElement.classList.add('error');
+    // editAssignedToEl.parentElement.classList.add('error');
     
     // editTaskListNameEl.parentElement.querySelector('small').innerText = '';
     // editTaskListNameEl.parentElement.classList.remove('error', 'success');
@@ -760,11 +766,11 @@ editTaskForm.addEventListener('reset', function() {
     
     editTaskDueDateEl.parentElement.querySelector('small').innerText = '';
     editTaskDueDateEl.parentElement.classList.remove('error', 'success');
-    editTaskDueDateEl.parentElement.classList.add('error');
+    // editTaskDueDateEl.parentElement.classList.add('error');
     
     editTaskStatusEl.parentElement.querySelector('small').innerText = '';
     editTaskStatusEl.parentElement.classList.remove('error', 'success');
-    editTaskStatusEl.parentElement.classList.add('error');
+    // editTaskStatusEl.parentElement.classList.add('error');
     
 });
 
@@ -773,13 +779,79 @@ editTaskForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     
-    editValidateTaskForm();
+    // editValidateTaskForm();
+    // validate form
+    let isTaskNameValid = editCheckTaskName(),
+        isTaskDescriptionValid = editCheckTaskDescription(),
+        isAssignedToValid = editCheckAssignedTo(),
+        isDueDateValid = editCheckDueDate(),
+        isStatusValid = editListCheckStatus();
+    
 
+    // submit to server if the form is valid
+    let isFormValid = isTaskNameValid && 
+        isTaskDescriptionValid && isAssignedToValid
+        && isDueDateValid && isStatusValid;
+
+    if(isFormValid) {
+        // addNewTaskForm.submit(); // commented out to prevent form from being submitted
+        // Getting the values of the inputs
+        const name = editTaskNameEl.value;
+        const description = editTaskDescriptionEl.value;
+        const assignedTo = editAssignedToEl.value;
+        const dueDate = editTaskDueDateEl.value;
+        let status = editTaskStatusEl.value;
+        const priority = editTaskPriorityEl.value;
+        // let id;
+
+        // setting default value of status to 'To Do'
+        // if (status) {
+        //     status = status;
+        // } else {
+        //     status = 'To Do'
+        // }
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // Check if a "Delete" button was clicked
+            if (event.target.classList.contains('edit-icon')) {
+            // Get the parent Task
+            // const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+            // console.log(parentTask);
+
+            // Get the taskId of the parent Task.
+            // const taskId = Number(parentTask.dataset.taskId);
+            const taskId = Number(event.target.dataset.taskId);
+    
+            // Get the task from the TaskManager using the taskId
+            const task = taskManager.getTaskById(taskId);
+            // console.log(task)
+
+            // Updating task
+            task.status = "Done";
+    
+            console.log(taskManager.tasks); // to check tasks
+    
+            // Save the tasks to localStorage
+            taskManager.save();
+    
+            // Render the tasks
+            taskManager.render();
+            }
+
+            if(isFormValid) {
+                editTaskForm.submit();
+            }
+        })
+
+        
+        
+
+    
     // const name = taskNameEl.value;
     // const description = taskDescriptionEl.value;
     // const assignedTo = taskAssignedToEl.value;
     // const dueDate = newTaskDueDateEl.value;
     // const status = newTaskStatusEl.value;
+    }
 });
 
 
@@ -869,13 +941,90 @@ editTaskForm.addEventListener('input', debounce(function (event) {
 
 
 
-// const greetingMessage = document.querySelector('#greetingMessage')
-// if(greetingMessage.is(':empty') ) {
-//     greetingMessage.innerHTML = "
-//     <!-- Greeting Message -->
-//     <li class="list-group-item ${status != 'Done' ? 'visible' : 'invisible'}">
-//     <h5>Welcome! 😎</h5>
-//     <p>Start adding tasks by clicking "Add to List" button</p>
-//     </li>
-//     "
-// }
+
+
+/*WEATHER SEARCH BY USING A CITY NAME (e.g. athens) */
+const weatherForm = document.querySelector(".widgets .weatherForm");
+const input = document.querySelector(".widgets input");
+const msg = document.querySelector(".widgets #errorMsg");
+const apiKey = "b8bf0ed1c987b492d0b3d6cfc25f3fce";
+
+function fetchWeather (city) {
+    let inputVal = input.value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const { name } = data;
+        const { icon, description } = data.weather[0];
+        let { temp } = data.main;
+        temp = Math.round(temp);
+
+        document.querySelector(".city").innerText = name;
+        document.querySelector(".icon").src =
+            "https://openweathermap.org/img/wn/" + icon + ".png";
+        document.querySelector(".description").innerText = description;
+        document.querySelector(".temp").innerText = temp + "°C";
+        document.querySelector(".weather").classList.remove("loading");
+  })
+};
+
+fetchWeather("Sydney");
+
+weatherForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let inputVal = input.value;
+
+    //ajax here
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const { name } = data;
+            const { icon, description } = data.weather[0];
+            let { temp } = data.main;
+            temp = Math.round(temp);
+
+            document.querySelector(".city").innerText = name;
+            document.querySelector(".icon").src =
+                "https://openweathermap.org/img/wn/" + icon + ".png";
+            document.querySelector(".description").innerText = description;
+            document.querySelector(".temp").innerText = temp + "°C";
+            document.querySelector(".weather").classList.remove("loading");
+
+            taskManager.save();
+            // const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${
+            // weather[0]["icon"]
+            // }.svg`;
+            
+            // const li = document.createElement("li");
+            // li.classList.add("city");
+            // const markup = `
+            // <h2 class="city-name" data-name="${name},${sys.country}">
+            //     <span>${name}</span>
+            //     <sup>${sys.country}</sup>
+            // </h2>
+            // <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
+            // <figure>
+            //     <img class="city-icon" src="${icon}" alt="${
+            // weather[0]["description"]
+            // }">
+            //     <figcaption>${weather[0]["description"]}</figcaption>
+            // </figure>
+            // `;
+            // li.innerHTML = markup;
+            // list.appendChild(li);
+        })
+        .catch(() => {
+            msg.textContent = "Please input a valid city";
+        });
+
+  msg.textContent = "";
+  weatherForm.reset();
+  input.focus();
+});
+
+
+

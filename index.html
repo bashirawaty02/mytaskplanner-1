@@ -32,21 +32,369 @@
     <title>My Task Planner</title>
   </head>
   <body>
-    <div class="header">
-      <img src="./images/bg_menu_anime.gif" alt="snow" width="100%" height="80px"/>
-      <h1 style="border: rgb(36, 35, 35) 2px dotted">To-do List</h1> 
+      <!-- <img src="./images/bg_menu_anime.gif" alt="snow" width="100%" height="80px"/>
+      <h1 style="border: rgb(36, 35, 35) 2px dotted">To-do List</h1>  -->
       
+      <nav class="navbar navbar-expand-lg navbar-dark"> <a class="navbar-brand mr-5" href="#" data-abc="true">To-do App</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon border-bottom border-dark"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <!-- <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0 ml-5"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> </form> -->
+            <ul class="navbar-nav mr-auto">
+              <!-- <li class="nav-item active"> <a class="nav-link" href="#" data-abc="true">Home <span class="sr-only">(current)</span></a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">contact</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Pricing</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Social</a> </li> -->
+            </ul>
+            <div class="userName mr-3">Hey John!<i class="fa fa-bell bell-icon ml-4"></i></div>
+          </div>
+      </nav>
+          
+          </div>
+         </div>
+        </div>
     </div>
-   
     
-    <!-- Task button -->
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-      Add New Task
-    </button> -->
-    <br>
-    <br>
+    <div class="content">
+      <!-- Task button -->
+      <!-- Button trigger modal -->
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Add New Task
+      </button> -->
+
+      <br>
+
+      <!-- <div class="wrapper">
+        <div class="left-side">
+         <div class="side-wrapper">
+          <div class="side-title">Tasks</div>
+          <div class="side-menu">
+           <a href="#">
+            Today
+           </a>
+           <a href="#">
+            Upcoming
+            <span class="notification-number updates">(3)</span>
+           </a>
+          </div>
+         </div>
+         <div class="side-wrapper">
+          <div class="side-title">Projects</div>
+          <div class="side-menu">
+           <a href="#">
+            Personal
+           </a>
+           <a href="#">
+            Work
+           </a>
+           <a href="#">
+            Shopping
+           </a>
+          </div>
+        </div>
+        </div>
+      </div> -->
+      
+      
+
+        <!-- Task Card -->
+        <div class="row justify-content-center tasks-container">
+          <div class="col-md-12">
+              <div class="card-hover-shadow-2x mb-3 card">
+                  <div class="card-header-tab card-header ">
+                    <div class="d-flex justify-content-between align-items-center">          
+                      <div class="card-header-title text-capitalize font-weight-bold" id="listName"><h5><i class="fa fa-tasks mb-2"></i>&nbsp;To-Do List
+                      <br><span id="date-element"></span></h5>
+                      </div>
+
+                      
+                        <!-- Task button -->
+                        <!-- Add to List Button trigger modal -->
+                      <div class="card-header-title">
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addToListModal">
+                          Add New Task
+                        </button>
+                      </div>
+                      
+                        <!-- Add to List Form Modal -->
+                      <div class="modal fade" id="addToListModal" tabindex="-1" role="dialog" aria-labelledby="addToListModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="addToListModal">Add to list</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Add to List Bootstrap form -->
+                              <form id="addToListTaskForm" method="POST">
+
+                                <!-- Form: Task Name -->
+                                <div class="form-group required form-field">
+                                    <label for="listTaskName" class="col-form-label">Task Name</label>
+                                    <input type="text" class="form-control " id="listTaskName" placeholder="Task Name">
+                                    <small></small>
+                                  </div>
+
+                                  <!-- Form: Description -->
+                                  <div class="form-group required form-field">
+                                    <label for="listTaskDescription" class="col-form-label">Description</label>
+                                      <textarea class="form-control" id="listTaskDescription" placeholder="Description"></textarea>
+                                      <small></small>
+                                  </div>
+
+                                  <div class="form-row">
+
+                                    <!-- Form: Assigned To -->
+                                    <div class="form-group required form-field col-md-6">
+                                      <label for="listAssignedTo" class="col-form-label">Assigned to</label>
+                                      <input type="text" class="form-control" id="listAssignedTo" placeholder="Assigned to">
+                                      <small></small>
+                                    </div>
+
+                                    <!-- Form: Due Date -->
+                                    <div class="form-group required form-field col-md-6">
+                                      <label for="listTaskDueDate" class="col-form-label">Due Date</label>
+                                      <input type="date" class="form-control" id="listTaskDueDate" value="Due date">
+                                      <small></small>
+                                    </div>
+                                  </div>
+
+                                  
+                                  <div class="form-row">
+                                    <!-- Form: Status -->
+                                        
+                                    <div class="form-group required form-field col-md-6">
+                                      <label for="listTaskStatus" class="col-form-label">Status</label>
+                                      <select class="form-control" id="listTaskStatus">
+                                        <option value="">Status option</option>
+                                        <option value="To Do">To Do</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Review">Review</option>
+                                        <option value="Done">Done</option>
+                                      </select>
+                                      <small></small>
+                                    </div>
+
+                                    <!-- Form: Priority Options -->
+
+                                    <div class="form-group form-field col-md-6">
+                                      <label for="listTaskPriority" class="col-form-label">Priority</label>
+                                      <select class="form-control" id="listTaskPriority">
+                                        <option value="">Priority option</option>             
+                                        <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
+                                        <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
+                                        <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
+                                        <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
+                                      </select>
+                                      <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                    </div>
+                                  </div>
+
+
+                                
+
+                              <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+                                <button name="ResetForm" class="btn btn-secondary" id="ResetForm" type="reset">Reset</button>
+                                <button class="btn btn-primary" type="submit" >Submit</button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      
+                      
+
+                  </div>
+                  <div class="scroll-area-sm">
+                      <perfect-scrollbar class="ps-show-limits">
+                          <div style="position: static;" class="ps ps--active-y">
+                              <div class="ps-content">
+                                
+
+                                  <ul class=" list-group list-group-flush tasksList" id="tasksList"></ul>  
+                                  <!-- add the empty state here. Used to display message when task list is empty -->
+                                  <div class="empty-state">
+                                    <h4 class="empty-state__title">Welcome! 😎</h4>
+                                    <p class="empty-state__description">Start adding tasks by clicking "Add New Task" button</p>
+                                    <img src="./images/tasklist.png" alt="">
+                                  </div>
+                                  <!-- end -->
+
+                                    <!-- Greeting Message -->
+                                    <!-- <li class="list-group-item">
+                                      <h5>Welcome! 😎</h5>
+                                      <p>Start adding tasks by clicking "Add to List" button</p>
+                                    </li> -->
+
+                                    <!-- List item 1 -->
+                                    <!-- <li class="list-group-item">
+                                      <div class="todo-indicator bg-warning"></div>
+                                      <div class="widget-content p-0">
+                                          <div class="widget-content-wrapper">
+                                              <div class="widget-content-left mr-2">
+                                                  <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
+                                              </div>
+                                              <div class="widget-content-right">
+                                                  <div class="widget-heading">Set up meeting <div class="badge badge-danger ml-2" id="newPriorityLabel">Priority 1</div>
+                                                  </div>
+                                                  <div class="widget-subheading"><small>Assigned To: Joanna</small></div>                                                    
+                                              <div class="d-flex w-100 mb-3 justify-content-between">
+                                                <small><i>In progress</i></small>
+                                                <small>Due: 06/07/2021</small>
+                                              </div>
+                                              <p>This is description. Lorem ipsum dolor s elit.?</p> -->
+
+                                              <!-- <p> -->
+                                                <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
+                                                  Edit
+                                                </button> -->
+                                                <!-- Delete Button trigger modal -->
+                                                <!-- <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#deleteTaskModal">
+                                                  Delete
+                                                </button> -->
+                                              <!-- </p> -->
+                                              
+
+
+                                              
+
+                                  <!-- </li> -->
+
+                                  <!-- List item 2 -->
+                                  <!-- <li class="list-group-item stroked" id="accordionTwo">
+                                      <div class="todo-indicator bg-focus"></div>
+                                      <div class="widget-content p-0">
+                                          <div class="widget-content-wrapper">
+                                              <div class="widget-content-left mr-2">
+                                                  <i class="fa fa-sm fa-grip-vertical"></i>
+                                                  <div class="custom-checkbox custom-control">
+                                                    <input class="custom-control-input" id="exampleCustomCheckbox1" type="checkbox">
+                                                    <label class="custom-control-label" for="exampleCustomCheckbox1" >&nbsp;</label>
+                                                  </div>
+                                              </div>
+                                              <div class="widget-content-right">
+                                                <div class="widget-heading">
+                                                  
+                                                  <div class="task-title">
+                                                  Call customers<div class="badge badge-warning ml-2">Priority 2</div>
+                                                  </div>
+                                                  <span class="blank"> </span>
+                                                  <div class="button-icons">
+                                                    <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
+                                                    <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
+                                                    <i class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
+                                                  </div>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
+                                                  <div class="widget-subheading"><small>Assigned To: Sujatha</small></div>
+                                                  <div class="d-flex w-100 mb-3 justify-content-between">
+                                                    <small><i>In progress</i></small>
+                                                    <small>Due: 06/07/2021</small>
+                                                  </div>
+                                                  <div class="content">
+                                                    <p>This is description.Lorem ipsum dolor sit amet consectetur Lorem i Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p> 
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </li> -->
+
+                                  <!-- List item 3 -->
+                                  <!-- <li class="list-group-item" id="accordionThree">
+                                      <div class="todo-indicator bg-primary"></div>
+                                      <div class="widget-content p-0">
+                                          <div class="widget-content-wrapper">
+                                              <div class="widget-content-left mr-2">
+                                                  <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox4" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox4">&nbsp;</label></div>
+                                              </div>
+                                              <div class="widget-content-right">
+                                                <div class="widget-heading">
+                                                  <div class="task-title">
+                                                  Orientation
+                                                  </div>
+                                                  <span class="blank"></span>
+                                                  <div class="button-icons">
+                                                    <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
+                                                    <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i>
+                                                    <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span></span></i>
+                                                  </div>
+                                                </div>
+                                                  
+                                                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionThree">
+                                                    <div class="widget-subheading"><small>Assigned To: Bhavani</small></div>
+                                                    <div class="d-flex w-100 mb-3 justify-content-between">
+                                                      <small><i>Done<div class="badge badge-pill badge-info ml-2">UPDATED</div></i></small>
+                                                      <small></small>
+                                                    </div>
+                                                    <p>This is description. Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+                                                    <p>
+                                                      
+                                                    </p>
+                                                  </div> -->
+                                                  
+                                              <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
+                                          <!-- </div>
+                                      </div> -->
+                                  <!-- </li> -->
+                                  
+                              <!-- </ul> -->
+                          </div>
+                      </div>
+                  </perfect-scrollbar>
+              </div>
+
+
+
+                  
+              </div>
+          </div>
+      </div>
+      
+      <div class="widgets">
+        <div class="weatherCard">
+          <div class="search">
+            <form class="weatherForm">
+              <input type="text" class="search-bar" placeholder="Search city">
+              <button class="weatherButton" type="submit"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
+                  width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
+                  </path>
+                </svg></button>
+            </form>
+            <small id = "errorMsg"></small>
+          </div>
+          <div class="weather loading">
+            <h4 class="city">Weather in Sydney</h4>
+            <h1 class="temp">32°C</h1>
+            <div class="flex">
+              <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
+              <div class="description">Cloudy</div>
+            </div>
+            <!-- <div class="humidity">Humidity: 60%</div>
+            <div class="wind">Wind speed: 6.2 km/h</div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
     
+
+    
+    
+    
+    
+    
+    <footer>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-lg"></i></button>
+      <a href="https://www.flaticon.com/free-icons/meal" class="listIcon" title="meal icons">Meal icons created by Flat Icons - Flaticon</a>
+    </footer>
+
     <!-- Add New Task Form Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -217,7 +565,7 @@
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
           <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-primary" id="saveButton" type="submit">Submit</button>
         </div>
         </form>
       </div>
@@ -250,269 +598,6 @@
         </div>
       </div>
     </div>
-
-      <!-- Task Card -->
-      <div class="row justify-content-center tasks-container">
-        <div class="col-md-5">
-            <div class="card-hover-shadow-2x mb-3 card">
-                <div class="card-header-tab card-header ">
-                  <div class="d-flex w-100 mb-3 justify-content-between align-items-center">          
-                    <div class="card-header-title font-size-lg text-capitalize font-weight-bold" id="listName"><i class="fa fa-tasks"></i>&nbsp;Work List
-                    <br><span id="date-element"></span>
-                    </div>
-
-                    
-                      <!-- Task button -->
-                      <!-- Add to List Button trigger modal -->
-                    <div class="card-header-title">
-                      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addToListModal">
-                        Add to List
-                      </button>
-                    </div>
-                    
-                      <!-- Add to List Form Modal -->
-                    <div class="modal fade" id="addToListModal" tabindex="-1" role="dialog" aria-labelledby="addToListModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="addToListModal">Add to list</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <!-- Add to List Bootstrap form -->
-                            <form id="addToListTaskForm" method="POST">
-
-                              <!-- Form: Task Name -->
-                              <div class="form-group required form-field">
-                                  <label for="listTaskName" class="col-form-label">Task Name</label>
-                                  <input type="text" class="form-control " id="listTaskName" placeholder="Task Name">
-                                  <small></small>
-                                </div>
-
-                                <!-- Form: Description -->
-                                <div class="form-group required form-field">
-                                  <label for="listTaskDescription" class="col-form-label">Description</label>
-                                    <textarea class="form-control" id="listTaskDescription" placeholder="Description"></textarea>
-                                    <small></small>
-                                </div>
-
-                                <div class="form-row">
-
-                                  <!-- Form: Assigned To -->
-                                  <div class="form-group required form-field col-md-6">
-                                    <label for="listAssignedTo" class="col-form-label">Assigned to</label>
-                                    <input type="text" class="form-control" id="listAssignedTo" placeholder="Assigned to">
-                                    <small></small>
-                                  </div>
-
-                                  <!-- Form: Due Date -->
-                                  <div class="form-group required form-field col-md-6">
-                                    <label for="listTaskDueDate" class="col-form-label">Due Date</label>
-                                    <input type="date" class="form-control" id="listTaskDueDate" value="Due date">
-                                    <small></small>
-                                  </div>
-                                </div>
-
-                                
-                                <div class="form-row">
-                                  <!-- Form: Status -->
-                                      
-                                  <div class="form-group required form-field col-md-6">
-                                    <label for="listTaskStatus" class="col-form-label">Status</label>
-                                    <select class="form-control" id="listTaskStatus">
-                                      <option value="">Status option</option>
-                                      <option value="To Do">To Do</option>
-                                      <option value="In Progress">In Progress</option>
-                                      <option value="Review">Review</option>
-                                      <option value="Done">Done</option>
-                                    </select>
-                                    <small></small>
-                                  </div>
-
-                                  <!-- Form: Priority Options -->
-
-                                  <div class="form-group form-field col-md-6">
-                                    <label for="listTaskPriority" class="col-form-label">Priority</label>
-                                    <select class="form-control" id="listTaskPriority">
-                                      <option value="">Priority option</option>             
-                                      <option value="Priority 1"><span class="emoji">🟥</span> Priority 1</option>
-                                      <option value="Priority 2"><span class="emoji">🟧</span> Priority 2</option>
-                                      <option value="Priority 3"><span class="emoji">🟦</span> Priority 3</option>
-                                      <option value="Priority 4"><span class="emoji">🟩</span> Priority 4</option>
-                                    </select>
-                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                  </div>
-                                </div>
-
-
-                              
-
-                            <div class="modal-footer">
-                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-                              <button name="ResetForm" class="btn btn-secondary" id="ResetForm" type="reset">Reset</button>
-                              <button class="btn btn-primary" type="submit" >Submit</button>
-                            </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                    
-                    
-
-                </div>
-                <div class="scroll-area-sm">
-                    <perfect-scrollbar class="ps-show-limits">
-                        <div style="position: static;" class="ps ps--active-y">
-                            <div class="ps-content">
-                              
-
-                                <ul class=" list-group list-group-flush tasksList" id="tasksList"></ul>  
-                                <!-- add the empty state here. Used to display message when task list is empty -->
-                                <div class="empty-state">
-                                  <h5 class="empty-state__title">Welcome! 😎</h2>
-                                  <p class="empty-state__description">Start adding tasks by clicking "Add to List" button</p>
-                                </div>
-                                <!-- end -->
-
-                                  <!-- Greeting Message -->
-                                  <!-- <li class="list-group-item">
-                                    <h5>Welcome! 😎</h5>
-                                    <p>Start adding tasks by clicking "Add to List" button</p>
-                                  </li> -->
-
-                                  <!-- List item 1 -->
-                                  <!-- <li class="list-group-item">
-                                    <div class="todo-indicator bg-warning"></div>
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>
-                                            </div>
-                                            <div class="widget-content-right">
-                                                <div class="widget-heading">Set up meeting <div class="badge badge-danger ml-2" id="newPriorityLabel">Priority 1</div>
-                                                </div>
-                                                <div class="widget-subheading"><small>Assigned To: Joanna</small></div>                                                    
-                                            <div class="d-flex w-100 mb-3 justify-content-between">
-                                              <small><i>In progress</i></small>
-                                              <small>Due: 06/07/2021</small>
-                                            </div>
-                                            <p>This is description. Lorem ipsum dolor s elit.?</p> -->
-
-                                            <!-- <p> -->
-                                              <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editTaskButtonModal">
-                                                Edit
-                                              </button> -->
-                                              <!-- Delete Button trigger modal -->
-                                              <!-- <button type="button" class="delete btn btn-info btn-md" data-toggle="modal" data-target="#deleteTaskModal">
-                                                Delete
-                                              </button> -->
-                                            <!-- </p> -->
-                                            
-
-
-                                            
-
-                                <!-- </li> -->
-
-                                <!-- List item 2 -->
-                                <!-- <li class="list-group-item stroked" id="accordionTwo">
-                                    <div class="todo-indicator bg-focus"></div>
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control">
-                                                  <input class="custom-control-input" id="exampleCustomCheckbox1" type="checkbox">
-                                                  <label class="custom-control-label" for="exampleCustomCheckbox1" >&nbsp;</label>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content-right">
-                                              <div class="widget-heading">
-                                                
-                                                <div class="task-title">
-                                                Call customers<div class="badge badge-warning ml-2">Priority 2</div>
-                                                </div>
-                                                <span class="blank"> </span>
-                                                <div class="button-icons">
-                                                  <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                                                  <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i> 
-                                                  <i class="fa fa-chevron-down fa-md icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
-                                                </div>
-                                              </div>
-                                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
-                                                <div class="widget-subheading"><small>Assigned To: Sujatha</small></div>
-                                                <div class="d-flex w-100 mb-3 justify-content-between">
-                                                  <small><i>In progress</i></small>
-                                                  <small>Due: 06/07/2021</small>
-                                                </div>
-                                                <div class="content">
-                                                  <p>This is description.Lorem ipsum dolor sit amet consectetur Lorem i Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p> 
-                                                  </p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> -->
-
-                                <!-- List item 3 -->
-                                <!-- <li class="list-group-item" id="accordionThree">
-                                    <div class="todo-indicator bg-primary"></div>
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox4" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox4">&nbsp;</label></div>
-                                            </div>
-                                            <div class="widget-content-right">
-                                              <div class="widget-heading">
-                                                <div class="task-title">
-                                                Orientation
-                                                </div>
-                                                <span class="blank"></span>
-                                                <div class="button-icons">
-                                                  <i class="fa fa-edit fa-lg edit-icon icons" data-toggle="modal" data-target="#editTaskButtonModal"></i>
-                                                  <i class="fa fa-trash fa-lg trash-icon icons" data-toggle="modal" data-target="#deleteTaskModal"></i>
-                                                  <i class="fa fa-chevron-down fa-md icons rotate" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span></span></i>
-                                                </div>
-                                              </div>
-                                                
-                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionThree">
-                                                  <div class="widget-subheading"><small>Assigned To: Bhavani</small></div>
-                                                  <div class="d-flex w-100 mb-3 justify-content-between">
-                                                    <small><i>Done<div class="badge badge-pill badge-info ml-2">UPDATED</div></i></small>
-                                                    <small></small>
-                                                  </div>
-                                                  <p>This is description. Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
-                                                  <p>
-                                                    
-                                                  </p>
-                                                </div> -->
-                                                
-                                            <!-- <div class="widget-content-right"> <button class="border-0 btn-transition btn btn-outline-success"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button> </div> -->
-                                        <!-- </div>
-                                    </div> -->
-                                <!-- </li> -->
-                                
-                            <!-- </ul> -->
-                        </div>
-                    </div>
-                </perfect-scrollbar>
-            </div>
-
-
-
-                
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-lg"></i></button>
-    </footer>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
