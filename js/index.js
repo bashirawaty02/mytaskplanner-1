@@ -545,7 +545,7 @@ addToListTaskForm.addEventListener('submit', function(event) {
 });
 
 tasksListHtml.onclick = checkboxDeleteFunction;
-
+let task;
 function checkboxDeleteFunction(event) {
     if (event.target.classList.contains('done-checkbox')) {
         // Get the parent Task
@@ -574,9 +574,9 @@ function checkboxDeleteFunction(event) {
         // console.log(parentTask); // to check on parentTask
     }
 
-    document.getElementById('deleteButton').addEventListener('click', function() {
-        // Check if a "Delete" button was clicked
-        if (event.target.classList.contains("delete-button")) {
+    // document.getElementById('deleteButton').addEventListener('click', function() {
+    // Check if a "Delete" button was clicked
+    if (event.target.classList.contains("delete-button")) {
         // Get the parent Task
         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
         // console.log(parentTask);
@@ -595,8 +595,8 @@ function checkboxDeleteFunction(event) {
 
         // Render the tasks
         taskManager.render();
-        }
-    })
+    }
+    
 
     document.getElementById('saveButton').addEventListener('click', function() {
         if (event.target.classList.contains("edit-button")) {
@@ -609,21 +609,52 @@ function checkboxDeleteFunction(event) {
             const task = taskManager.getTaskById(taskId);
             console.log(task);
             // Updating task element values
+            let isTaskNameValid = editCheckTaskName(),
+                isTaskDescriptionValid = editCheckTaskDescription(),
+                isAssignedToValid = editCheckAssignedTo(),
+                isDueDateValid = editCheckDueDate(),
+                isStatusValid = editListCheckStatus();
             
-            task.name = editTaskNameEl.value;
-            task.description = editTaskDescriptionEl.value;
-            task.assignedTo = editAssignedToEl.value;
-            task.dueDate = editTaskDueDateEl.value;
-            task.status = editTaskStatusEl.value;
-            task.priority = editTaskPriorityEl.value;
+
+            // submit to server if the form is valid
+            let isFormValid = isTaskNameValid && 
+                isTaskDescriptionValid && isAssignedToValid
+                && isDueDateValid && isStatusValid;
+
+
+            if(isFormValid) {
+                // editTaskForm.submit();
+                task.name = editTaskNameEl.value;
+                task.description = editTaskDescriptionEl.value;
+                task.assignedTo = editAssignedToEl.value;
+                task.dueDate = editTaskDueDateEl.value;
+                task.status = editTaskStatusEl.value;
+                task.priority = editTaskPriorityEl.value;
+
+                console.log(taskManager.tasks); // to check tasks
+
+                // Save the tasks to localStorage
+                taskManager.save();
+
+                // Render the tasks
+                taskManager.render();
+
+                editTaskForm.submit();
+            }
+            // task.name = editTaskNameEl.value;
+            // task.description = editTaskDescriptionEl.value;
+            // task.assignedTo = editAssignedToEl.value;
+            // task.dueDate = editTaskDueDateEl.value;
+            // task.status = editTaskStatusEl.value;
+            // task.priority = editTaskPriorityEl.value;
     
-            console.log(taskManager.tasks); // to check tasks
+            // console.log(taskManager.tasks); // to check tasks
     
-            // Save the tasks to localStorage
-            taskManager.save();
+            // // Save the tasks to localStorage
+            // taskManager.save();
     
-            // Render the tasks
-            taskManager.render();
+            // // Render the tasks
+            // taskManager.render();
         
         }
     });
@@ -785,7 +816,21 @@ const editValidateTaskForm = function() {
 
 
     if(isFormValid) {
-        editTaskForm.submit();
+        // editTaskForm.submit();
+        task.name = editTaskNameEl.value;
+        task.description = editTaskDescriptionEl.value;
+        task.assignedTo = editAssignedToEl.value;
+        task.dueDate = editTaskDueDateEl.value;
+        task.status = editTaskStatusEl.value;
+        task.priority = editTaskPriorityEl.value;
+
+        console.log(taskManager.tasks); // to check tasks
+
+        // Save the tasks to localStorage
+        taskManager.save();
+
+        // Render the tasks
+        taskManager.render();
     }
 };
 
@@ -879,9 +924,9 @@ editTaskForm.addEventListener('submit', function(event) {
             
     //     })
 
-            if(isFormValid) {
-                editTaskForm.submit();
-            }
+            // if(isFormValid) {
+            //     editTaskForm.submit();
+            // }
     
 
         

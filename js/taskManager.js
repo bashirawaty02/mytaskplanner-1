@@ -23,8 +23,8 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, priority
                         <h4><div class="badge">
                         
                         <div class="badge badge-pill badge-info ${status != 'Done' ? 'invisible' : 'visible'}">Done</div>
-                        <i class="fa fa-edit fa-lg  edit-icon edit-button icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" id="editButton${id}" data-target="#editTaskButtonModal" data-task-id=${id}></i>
-                        <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target="#deleteTaskModal"></span>
+                        <span class="fa fa-edit fa-lg  edit-icon edit-button icons ${status != 'Done' ? 'visible' : 'visible'}" data-toggle="modal" id="editButton${id}" data-target="#editTaskButtonModal" data-task-id=${id}></span>
+                        <span class="fa fa-trash fa-lg trash-icon icons delete-button ${status != 'Done' ? 'visible' : 'visible'}" id="deleteButton${id}" data-toggle="modal" data-target=""></span>
                         <span class="fa fa-chevron-down fa-md chevron-icon icons rotate" id="downArrow" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}"></span></badge></h4>
                     </div>
                 </div>
