@@ -218,10 +218,6 @@ html {
     color: rgba(54, 54, 54, 0.918);
 }
 
-.weather-icon {
-    background-color: ;
-}
-
 .drag-icon {
     color: rgb(207, 207, 207);
 }
@@ -313,12 +309,12 @@ li.over {
 /* weather card*/
 
 .weatherCard {
-    background: #eeeeee;
+    background: #dbdbdbec;
     color: rgb(43, 42, 42);
     padding: 1.2em;
     border-radius: 10px;
     max-width: 300px;
-    box-shadow: 1px 4px #c5c5c5c9;
+    box-shadow: 1px 4px #bebebec9;
     margin-top: 5vh;
     text-align: center;
 }
@@ -348,8 +344,8 @@ input.search-bar {
     outline: none;
     padding: 0.4em 1em;
     border-radius: 24px;
-    background: #7c7c7c2b;
-    color: rgb(48, 47, 47);
+    background: #4b4b4b2b;
+    color: rgb(29, 29, 29);
     font-family: inherit;
     font-size: 105%;
     width: calc(100% - 100px);
