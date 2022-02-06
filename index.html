@@ -39,12 +39,14 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <!-- <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0 ml-5"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> </form> -->
             <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><a class="button" href="#personalisedForm2" data-toggle="modal" data-target="#personalisedForm2">Personalise Page!</a></li>
+              <!-- <li class="nav-item"><a class="button" href="#personalisedForm" id="personalisePage">Personalise Page!</a></li> -->
               <!-- <li class="nav-item active"> <a class="nav-link" href="#" data-abc="true">Home <span class="sr-only">(current)</span></a> </li>
               <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">contact</a> </li>
               <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Pricing</a> </li>
               <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Social</a> </li> -->
             </ul>
-            <div class="userName mr-3">Hey John!<i class="fa fa-bell bell-icon ml-4"></i></div>
+            <div class="userName mr-3"><i class="fa fa-bell bell-icon ml-4"></i></div>
           </div>
       </nav>
           
@@ -53,6 +55,77 @@
         </div>
     </div>
     
+
+
+    <!-- Modal -->
+    <!-- <form class="personalisedForm2">
+      <div class="modal fade" id="personalisedForm2" tabindex="-1" role="dialog" aria-labelledby="personalisedFormTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="personalisedFormTitle">Personalise & make it yours!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="personalisedName">Name</label>
+                <input type="text" class="form-control" id="personalisedName" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="personalisedCity">City</label>
+                <input type="text" class="form-control" id="personalisedCity" placeholder="City">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="personalisedButton" id="personalisedButton">Save</button>
+            </div>
+            </div>
+        </div>
+      </div>
+    </form> -->
+
+    <!-- Modal -->
+    <form class="personalisedForm2">
+      <div class="modal fade" id="personalisedForm2" tabindex="-1" role="dialog" aria-labelledby="personalisedFormTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="personalisedFormTitle">Personalise & make it yours!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="type-2" id="personalisedName2" placeholder="Name" />
+              <input type="text" class="type-2" id="personalisedCity2" placeholder="City" />
+            </div>
+            <!-- <div class="modal-footer"> -->
+              <!-- <button type="submit" class="personalisedButton" id="personalisedButton">Save</button> -->
+              <button type="submit" class="personalisedButton2" id="personalisedButton2" name="personalisedButton2">Save</button>
+            <!-- </div> -->
+            </div>
+        </div>
+      </div>
+    </form>
+    
+
+  <form class="personalisedForm">
+    <div class="overlay" style="display:none">
+      <div class="popup"  id="popup">
+        <button id="close">&times;</button>
+        <h2>Personalise and make it yours</h2>
+        <input type="text" class="type-2" id="personalisedName" placeholder="Name" />
+        <input type="text" class="type-2" id="personalisedCity" placeholder="City" />
+        <button type="submit" class="personalisedButton" id="personalisedButton" name="personalisedButton">Save</button>
+      </div>
+    </div>
+  </form>
+
+
+
+
     <div class="content">
       <!-- Task button -->
       <!-- Button trigger modal -->
@@ -359,7 +432,7 @@
         <div class="weatherCard">
           <div class="search">
             <form class="weatherForm">
-              <input type="text" class="search-bar" placeholder="Search city">
+              <input type="text" class="search-bar" placeholder="Search city" id="weatherCity">
               <button class="weatherButton" type="submit"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
                   width="1.5em" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -380,6 +453,17 @@
             <div class="wind">Wind speed: 6.2 km/h</div> -->
           </div>
         </div>
+
+        <!-- <div class="quoteCard">
+          <div class="quote loading">
+            <p id="quoteContent">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas,
+              magni.
+            </p>
+            <h3 id="quoteAuthor">Lorem, ipsum.</h3>
+            <button id="quoteButton">Get Quote</button>
+          </div>
+        </div> -->
       </div>
 
     </div>
@@ -606,6 +690,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/taskManager.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/greeting.js"></script>
+    <script src="./js/weather.js"></script>
     
  
 

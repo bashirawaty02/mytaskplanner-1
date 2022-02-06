@@ -64,6 +64,10 @@ function topFunction() {
   behavior: "smooth";
 }
 
+// capitalise first letter
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // Validating form
 const addNewTaskForm = document.getElementById('newTaskForm'); 
@@ -294,13 +298,13 @@ addNewTaskForm.addEventListener('submit', function(event) {
     if(isFormValid) {
         // addNewTaskForm.submit(); // commented out to prevent form from being submitted
         // Getting the values of the inputs
-        const name = newTaskNameEl.value;
-        const description = newTaskDescriptionEl.value;
-        const assignedTo = newTaskAssignedToEl.value;
-        const listName = newListNameEl.value;
-        const dueDate = newTaskDueDateEl.value;
-        const status = newTaskStatusEl.value;
-        const priority = newTaskPriorityEl.value;
+        const name = capitalizeFirstLetter(newTaskNameEl.value);
+        const description = capitalizeFirstLetter(newTaskDescriptionEl.value);
+        const assignedTo = capitalizeFirstLetter(newTaskAssignedToEl.value);
+        const listName = capitalizeFirstLetter(newListNameEl.value);
+        const dueDate = capitalizeFirstLetter(newTaskDueDateEl.value);
+        const status = capitalizeFirstLetter(newTaskStatusEl.value);
+        const priority = capitalizeFirstLetter(newTaskPriorityEl.value);
 
         // Adding task to the taskManager
         taskManager.addTask(name, description, assignedTo, listName, dueDate, status, priority);
@@ -489,12 +493,12 @@ addToListTaskForm.addEventListener('submit', function(event) {
     if(isFormValid) {
         // addNewTaskForm.submit(); // commented out to prevent form from being submitted
         // Getting the values of the inputs
-        const name = addListTaskNameEl.value;
-        const description = addListTaskDescriptionEl.value;
-        const assignedTo = addListAssignedToEl.value;
-        const dueDate = addListTaskDueDateEl.value;
-        let status = addListTaskStatusEl.value;
-        const priority = addListTaskPriorityEl.value;
+        const name = capitalizeFirstLetter(addListTaskNameEl.value);
+        const description = capitalizeFirstLetter(addListTaskDescriptionEl.value);
+        const assignedTo = capitalizeFirstLetter(addListAssignedToEl.value);
+        const dueDate = capitalizeFirstLetter(addListTaskDueDateEl.value);
+        let status = capitalizeFirstLetter(addListTaskStatusEl.value);
+        const priority = capitalizeFirstLetter(addListTaskPriorityEl.value);
         // let id;
 
         // setting default value of status to 'To Do'
@@ -624,12 +628,12 @@ function checkboxDeleteFunction(event) {
 
             if(isFormValid) {
                 // editTaskForm.submit();
-                task.name = editTaskNameEl.value;
-                task.description = editTaskDescriptionEl.value;
-                task.assignedTo = editAssignedToEl.value;
-                task.dueDate = editTaskDueDateEl.value;
-                task.status = editTaskStatusEl.value;
-                task.priority = editTaskPriorityEl.value;
+                task.name = capitalizeFirstLetter(editTaskNameEl.value);
+                task.description = capitalizeFirstLetter(editTaskDescriptionEl.value);
+                task.assignedTo = capitalizeFirstLetter(editAssignedToEl.value);
+                task.dueDate = capitalizeFirstLetter(editTaskDueDateEl.value);
+                task.status = capitalizeFirstLetter(editTaskStatusEl.value);
+                task.priority = capitalizeFirstLetter(editTaskPriorityEl.value);
 
                 console.log(taskManager.tasks); // to check tasks
 
@@ -817,12 +821,12 @@ const editValidateTaskForm = function() {
 
     if(isFormValid) {
         // editTaskForm.submit();
-        task.name = editTaskNameEl.value;
-        task.description = editTaskDescriptionEl.value;
-        task.assignedTo = editAssignedToEl.value;
-        task.dueDate = editTaskDueDateEl.value;
-        task.status = editTaskStatusEl.value;
-        task.priority = editTaskPriorityEl.value;
+        task.name = capitalizeFirstLetter(editTaskNameEl.value);
+        task.description = capitalizeFirstLetter(editTaskDescriptionEl.value);
+        task.assignedTo = capitalizeFirstLetter(editAssignedToEl.value);
+        task.dueDate = capitalizeFirstLetter(editTaskDueDateEl.value);
+        task.status = capitalizeFirstLetter(editTaskStatusEl.value);
+        task.priority = capitalizeFirstLetter(editTaskPriorityEl.value);
 
         console.log(taskManager.tasks); // to check tasks
 
@@ -831,6 +835,8 @@ const editValidateTaskForm = function() {
 
         // Render the tasks
         taskManager.render();
+
+        // editTaskForm.submit();
     }
 };
 
@@ -885,6 +891,11 @@ editTaskForm.addEventListener('submit', function(event) {
         isTaskDescriptionValid && isAssignedToValid
         && isDueDateValid && isStatusValid;
 
+
+    if(isFormValid) {
+        // editTaskForm.submit();
+        location.reload(true);
+    }
     // if(isFormValid) {
     //     // addNewTaskForm.submit(); // commented out to prevent form from being submitted
     //     // Getting the values of the inputs
@@ -1025,85 +1036,65 @@ editTaskForm.addEventListener('input', debounce(function (event) {
 
 
 
-/*WEATHER SEARCH BY USING A CITY NAME (e.g. athens) */
-const weatherForm = document.querySelector(".widgets .weatherForm");
-const input = document.querySelector(".widgets input");
-const msg = document.querySelector(".widgets #errorMsg");
-const apiKey = "b8bf0ed1c987b492d0b3d6cfc25f3fce";
 
-function fetchWeather (city) {
-    let inputVal = input.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const { name } = data;
-        const { icon, description } = data.weather[0];
-        let { temp } = data.main;
-        temp = Math.round(temp);
+// drag & drop 1
+let dragSatMS = null;
 
-        document.querySelector(".city").innerText = name;
-        document.querySelector(".icon").src =
-            "https://openweathermap.org/img/wn/" + icon + ".png";
-        document.querySelector(".description").innerText = description;
-        document.querySelector(".temp").innerText = temp + "°C";
-        document.querySelector(".weather").classList.remove("loading");
-  })
-};
+function handleDragStart(e) {
+//   this.style.color = 'green'; 
+  dragSatMS = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text', this.innerHTML);
+}
 
-fetchWeather("Sydney");
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  e.dataTransfer.dropEffect = 'move';
+  return false;
+}
 
-weatherForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    let inputVal = input.value;
+function handleDragEnter(e) {
+  this.classList.add('over');
+}
 
-    //ajax here
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const { name } = data;
-            const { icon, description } = data.weather[0];
-            let { temp } = data.main;
-            temp = Math.round(temp);
+function handleDragLeave(e) {
+  this.classList.remove('over');
+  //this.style.color = '#333';  
+}
 
-            document.querySelector(".city").innerText = name;
-            document.querySelector(".icon").src =
-                "https://openweathermap.org/img/wn/" + icon + ".png";
-            document.querySelector(".description").innerText = description;
-            document.querySelector(".temp").innerText = temp + "°C";
-            document.querySelector(".weather").classList.remove("loading");
+function handleDrop(e) {
+  if (e.stopPropagation) {
+    e.stopPropagation();
+  }
+  if (dragSatMS != this) {
+    dragSatMS.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text');
+    //Get the data-band-id of both items.
+    itemToReplaceAttr = this.attributes["list-item-id"].value;
+    draggedItemAttr = dragSatMS.attributes["list-item-id"].value;
+    //Call "setAttribute" to update the attributes.
+    this.setAttribute("list-item-id", draggedItemAttr);
+    dragSatMS.setAttribute("list-item-id", itemToReplaceAttr);
+  }
+  return false;
+}
 
-            taskManager.save();
-            // const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${
-            // weather[0]["icon"]
-            // }.svg`;
-            
-            // const li = document.createElement("li");
-            // li.classList.add("city");
-            // const markup = `
-            // <h2 class="city-name" data-name="${name},${sys.country}">
-            //     <span>${name}</span>
-            //     <sup>${sys.country}</sup>
-            // </h2>
-            // <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
-            // <figure>
-            //     <img class="city-icon" src="${icon}" alt="${
-            // weather[0]["description"]
-            // }">
-            //     <figcaption>${weather[0]["description"]}</figcaption>
-            // </figure>
-            // `;
-            // li.innerHTML = markup;
-            // list.appendChild(li);
-        })
-        .catch(() => {
-            msg.textContent = "Please input a valid city";
-        });
-
-  msg.textContent = "";
-  weatherForm.reset();
-  input.focus();
+function handleDragEnd(e) {
+  [].forEach.call(mssatCols, function(mSatCol) {
+    mSatCol.classList.remove('over');
+    //mSatCol.style.color = '#333';
+  });
+}
+let mssatCols = document.querySelectorAll('#tasksList .draggable');
+[].forEach.call(mssatCols, function(msSatCol) {
+  msSatCol.addEventListener('dragstart', handleDragStart, false);
+  msSatCol.addEventListener('dragenter', handleDragEnter, false);
+  msSatCol.addEventListener('dragover', handleDragOver, false);
+  msSatCol.addEventListener('dragleave', handleDragLeave, false);
+  msSatCol.addEventListener('drop', handleDrop, false);
+  msSatCol.addEventListener('dragend', handleDragEnd, false);
 });
+

@@ -197,7 +197,10 @@ html {
     
 }
 
-
+.scroll-area-sm {
+    max-height: 65vh;
+    overflow-x: hidden;
+}
 
 .icons {
     cursor: pointer;
@@ -268,7 +271,7 @@ li.over {
     transition: .7s transform ease-in-out;
 }
 
-/* to validate: error / success */
+/* form to validate: error / success */
 .form-group.required .col-form-label:after {
     content:"*";color:red;
 }
@@ -378,11 +381,94 @@ h1.temp {
 
 .weather.loading:after {
     visibility: visible;
-    content: "Loading...";
+    content: "Please enter a valid city...";
     color: white;
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 20px;
+}
+
+/* popup */
+.popup{
+    background-color: #ffffff;
+    width: 400px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none;
+    text-align: center;
+    z-index: 2;
+}
+#close {
+    display: block;
+    margin:  0 0 20px auto;
+    background-color: transparent;
+    font-size: 30px;
+    color: #c5c5c5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.personalisedButton {
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #4e4e4e;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 0;
+    border-radius: 8px;
+}
+
+
+.overlay {
+	position: fixed;
+	background-color:rgba(128, 128, 128, 0.863);
+	background-repeat: repeat;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+input {
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+}
+
+.type-2 {
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+    background-color: #fafafa;
+    border:0;
+    box-shadow:0 0 4px rgba(0,0,0,0.3);
+    transition: .3s box-shadow;
+}
+.type-2:hover {
+    box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+
+.personalisedButton2 {
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 8px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #4e4e4e;
+    color: white;
+    width: 150px;
 }
 
 /* media query */
