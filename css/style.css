@@ -132,11 +132,21 @@ form {
     font-weight: bold;
 }
 
-/* fixing attribution to the bottom of page */
+/* fixing footer elements to the bottom of page */
 .listIcon {
     position: fixed;
     bottom: 0;
+    left: 0;
     color: grey;
+}
+
+.created {
+    position: fixed;
+    bottom: 0;
+    right: 0px;
+    padding: 5px;
+    color: rgb(253, 251, 251);
+    background-color: #4e4e4ea2;
 }
 
 /* smooth scrolling to top button */
