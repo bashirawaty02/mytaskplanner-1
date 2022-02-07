@@ -1,5 +1,5 @@
 # To-do List App
-The purpose of this project is to create a to-do list app and be able to add tasks, edit tasks and delete tasks as required. We have used HTML, CSS, bootstrap, Javascript, openWeather API and popup page to create it. 
+The purpose of this project is to create a functional and user-friendly to-do list app and be able to add tasks, edit tasks and delete tasks as required. We have added empty message for when to-do list is empty and popup page to be displayed when it first loads to personalise the page.
 
 It consists of 3 sprints which are as follows:
 - Sprint 1: Wireframe & layout components
@@ -8,22 +8,33 @@ It consists of 3 sprints which are as follows:
   - Designing wireframe (Information: Name, Description, AssignedTo, DueDate, Status options & Priority options)
   - Implementing wireframe using Bootstrap
   - Creating task layout
+
 - Sprint 2: Tasks validation & tasks display
 ![Sprint 2](https://user-images.githubusercontent.com/55301780/152730430-689a09ae-44ff-406e-abab-dbddcf986d18.PNG)
   - Task form input validation
   - Displaying date
   - Creating class using Javascript & add tasks programmatically
   - Displaying tasks
+
 - Sprint 3: Updating tasks, local storage persistence & deleting tasks
-![Sprint 3 - Final](https://user-images.githubusercontent.com/55301780/152730423-6cdb41b6-192a-47f8-b25d-6e9e5a7606e6.PNG)
   - Updating tasks
   - Persisting tasks with local storage
   - Deleting tasks
-  
-![Sprint 3 - Popup](https://user-images.githubusercontent.com/55301780/152730427-0c971f4d-4e24-444d-a2a3-098a06a88788.PNG)
+## Final Outcome
+
+![Sprint 3 - Popup](https://user-images.githubusercontent.com/55301780/152888796-9c6853a9-aa06-41ba-8ff1-640d50077d8a.PNG)
+![Empty Message](https://user-images.githubusercontent.com/55301780/152889817-419766ef-3d63-4cbe-8cee-2b61b3b96a65.PNG)
+![Sprint 3 - Final](https://user-images.githubusercontent.com/55301780/152889450-299610a5-5744-49d2-9c6a-e219b1660842.PNG)
 
 ## Demo Site
 https://icelemonteh.github.io/mytaskplanner/
+
+## Technologies Used
+- HTML, CSS, Javascript, Bootstrap
+- Figma
+- Visual Studio Code
+- OpenWeather API
+- Quotable API
 
 ## References
 - Bootstrap: https://getbootstrap.com/docs/4.0/components/card/ & https://getbootstrap.com/docs/4.0/components/forms/
