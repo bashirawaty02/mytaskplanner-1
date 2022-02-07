@@ -59,30 +59,6 @@ personalisedForm2.addEventListener("submit", function(event) {
     location.reload(true); // to reload page after submission
 });
 
-function saveSetting() {
-    let personalisedNameEl = document.querySelector('#personalisedName');
-    const personalisedCityEl = document.querySelector('#personalisedCity');
-
-    
-    if(personalisedCityEl.value != "") {
-        let weatherCity = personalisedCityEl.value;
-        localStorage.setItem("city", weatherCity);
-    }
-
-    // let personalisedName = document.getElementById('personalisedName').value;
-    let personalisedName = capitalizeFirstLetter(personalisedNameEl.value);
-    localStorage.setItem("user", personalisedName);
-
-    // displayName.innerHTML = `Hey ${personalisedName}`;
-    loadUser();
-    loadWeather();
-
-    // close modal form
-    $(".overlay").hide();
-
-    // personalisedForm.submit(); // submits form
-    // location.reload(true); // to reload page after submission
-}
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

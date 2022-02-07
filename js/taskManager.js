@@ -49,7 +49,6 @@ class TaskManager {
     constructor(currentId = 0) {
         this.tasks = [];
         this.currentId = currentId;
-        this.city = "Sydney";
     }
 
     // Create the addTask method
@@ -140,8 +139,6 @@ class TaskManager {
         // Store the currentId in localStorage
         localStorage.setItem("currentId", currentId);
 
-        const city = this.city;
-        localStorage.setItem("city", city);
     }
 
     // Converting saved JSON for this.tasks to an array when
