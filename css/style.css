@@ -392,6 +392,24 @@ h1.temp {
     left: 20px;
 }
 
+/* quote widget */
+#quoteButton {
+    margin: 0.5em;
+    border-radius: 10%;
+    border: none;
+    height: 44px;
+    /* width: 44px; */
+    outline: none;
+    background: #00000050;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+#quoteButton:hover {
+    background: #0000006b;
+}
+
 /* popup */
 .popup{
     background-color: #ffffff;

@@ -666,41 +666,6 @@ function checkboxDeleteFunction(event) {
 };
 
 
-// document.getElementById('saveButton').addEventListener('click', function() {
-//     // prevent the form from submitting
-//     // event.preventDefault();
-//     if (event.target.classList.contains("edit-button")) {
-//         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-//         console.log(parentTask);
-//             // console.log(parentTask)
-//             // Get the taskId of the parent Task.
-//             const taskId = Number(parentTask.dataset.taskId);
-//             console.log(taskId)
-//             // Get the task from the TaskManager using the taskId
-//             const task = taskManager.getTaskById(taskId);
-//             console.log(task)
-//             // Update the task status to 'Done'
-            
-//             task.name = editTaskNameEl.value;
-//             task.description = editTaskDescriptionEl.value;
-//             task.assignedTo = editAssignedToEl.value;
-//             task.dueDate = editTaskDueDateEl.value;
-//             task.status = editTaskStatusEl.value;
-//             task.priority = editTaskPriorityEl.value;
-//             // console.log(task);
-    
-//             console.log(taskManager.tasks); // to check tasks
-    
-//             // Save the tasks to localStorage
-//             taskManager.save();
-    
-//             // Render the tasks
-//             taskManager.render();
-    
-//             // parentTask.setAttribute('class', 'stroked');
-//             // console.log(parentTask); // to check on parentTask
-//     }
-// });
 
 
 // VALIDATING EDIT FORM
