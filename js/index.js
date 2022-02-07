@@ -1039,62 +1039,49 @@ editTaskForm.addEventListener('input', debounce(function (event) {
 
 
 // drag & drop 1
-let dragSatMS = null;
-
-function handleDragStart(e) {
-//   this.style.color = 'green'; 
-  dragSatMS = this;
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text', this.innerHTML);
-}
-
-function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault();
-  }
-  e.dataTransfer.dropEffect = 'move';
-  return false;
-}
-
-function handleDragEnter(e) {
-  this.classList.add('over');
-}
-
-function handleDragLeave(e) {
-  this.classList.remove('over');
-  //this.style.color = '#333';  
-}
-
-function handleDrop(e) {
-  if (e.stopPropagation) {
-    e.stopPropagation();
-  }
-  if (dragSatMS != this) {
-    dragSatMS.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData('text');
-    //Get the data-band-id of both items.
-    itemToReplaceAttr = this.attributes["list-item-id"].value;
-    draggedItemAttr = dragSatMS.attributes["list-item-id"].value;
-    //Call "setAttribute" to update the attributes.
-    this.setAttribute("list-item-id", draggedItemAttr);
-    dragSatMS.setAttribute("list-item-id", itemToReplaceAttr);
-  }
-  return false;
-}
-
-function handleDragEnd(e) {
-  [].forEach.call(mssatCols, function(mSatCol) {
-    mSatCol.classList.remove('over');
-    //mSatCol.style.color = '#333';
-  });
-}
-let mssatCols = document.querySelectorAll('#tasksList .draggable');
-[].forEach.call(mssatCols, function(msSatCol) {
-  msSatCol.addEventListener('dragstart', handleDragStart, false);
-  msSatCol.addEventListener('dragenter', handleDragEnter, false);
-  msSatCol.addEventListener('dragover', handleDragOver, false);
-  msSatCol.addEventListener('dragleave', handleDragLeave, false);
-  msSatCol.addEventListener('drop', handleDrop, false);
-  msSatCol.addEventListener('dragend', handleDragEnd, false);
+$("ul").on("dragstart","li",function(event){
+    $(this).css("opacity", 0.4);
+    dragElement = $(this);
+    event.originalEvent.dataTransfer.effectAllowed = 'move';
+    event.originalEvent.dataTransfer.setData('text/html', $(this).html());
 });
 
+$("ul").on("dragenter","li",function(){
+    $(this).addClass("over");
+});
+
+$("ul").on("dragleave","li",function(){
+    $(this).removeClass("over");
+});
+
+
+$("ul").on("dragover","li",function(event){
+    if (event.preventDefault) {
+        event.preventDefault(); // Necessary. Allows us to drop.
+    }
+  event.originalEvent.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+  return false;
+});
+
+// drag and drop handle
+
+$("ul").on("drop","li",function(event){
+  if (event.stopPropagation) {
+    event.stopPropagation(); 
+  }
+
+  if (dragElement != $(this)) {
+    $(dragElement).html($(this).html())
+    dragElement.innerHTML = this.innerHTML;
+    this.innerHTML = event.originalEvent.dataTransfer.getData('text/html');
+  }
+  return false;
+  
+});
+
+$("ul").on("dragend","li",function(e){
+    $("ul li").removeClass("over");
+    $(this).css("opacity", 1);
+    
+    
+});

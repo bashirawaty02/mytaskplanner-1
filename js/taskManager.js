@@ -4,7 +4,7 @@
 const createTaskHtml = (name, description, assignedTo, dueDate, status, priority, id) => {
     const html = `
     <!-- List item ${id} -->
-    <li class="list-group-item ${status != 'Done' ? '' : 'stroked'} "draggable" draggable="true" " id="accordion${id}" data-task-id=${id}>
+    <li class="list-group-item ${status != 'Done' ? '' : 'stroked'} "draggable" draggable="true" " id="accordion${id} draggable" data-task-id=${id}>
     <div class="todo-indicator bg-warning"></div>
     <div class="widget-content p-0">
         <div class="widget-content-wrapper">
@@ -105,7 +105,7 @@ class TaskManager {
 
             // Create the task html
             const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.status, task.priority, task.id);
-
+            
             // Push it to the tasksHtmlList array
             tasksHtmlList.push(taskHtml);
         }
@@ -123,6 +123,8 @@ class TaskManager {
         })
 
     }
+
+    
 
     // Storing locally - localStorage can only store strings
     // so we have to convert this.tasks array to a string 
